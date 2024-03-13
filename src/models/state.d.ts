@@ -15,7 +15,7 @@ export interface MdCovers {
   b2key: string;
 }
 
-type TopMangaApiResponse = { rank: RankDetails[] };
+type MangaApiResponse = { rank: RankDetails[] };
 
 export interface FirstChap {
   chap: string;
