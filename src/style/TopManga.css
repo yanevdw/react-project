@@ -1,0 +1,12 @@
+.top-manga-container {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+
+  .manga-display {
+    width: 30%;
+    flex: 0 0 45%;
+  }
+}
