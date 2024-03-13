@@ -5,10 +5,10 @@ export interface RankDetails {
   content_rating: string;
   genres: number[];
   last_chapter: number;
-  md_covers: MdCovers;
+  md_covers: MdCover;
 }
 
-export interface MdCovers {
+export interface MdCover {
   vol?: string;
   w: number;
   h: number;
@@ -22,10 +22,10 @@ export interface FirstChap {
   hid: string;
   lang: string;
   group_name: string[];
-  vol: string;
+  vol: string | null;
 }
 
-export interface Links {
+export interface Link {
   al: string;
   ap: string;
   bw: string;
@@ -43,10 +43,10 @@ export interface Relates {
   title: string;
   slug: string;
   hid: string;
-  md_covers: MdCovers;
+  md_covers: MdCover;
 }
 
-export interface Recommendations {
+export interface Recommendation {
   up: number;
   down: number;
   total: number;
@@ -64,7 +64,7 @@ export interface MdRelates {
 
 export interface RelateFrom {
   relate_to: RelateTo;
-  md_realtes: MdRelates;
+  md_relates: MdRelates;
 }
 
 export interface MdTitle {
@@ -79,30 +79,30 @@ export interface MdGenre {
   group: string;
 }
 
-export interface MuPublishers {
+export interface MuPublisher {
   title: string;
   slug: string;
 }
 
-export interface MuComicPublishers {
-  mu_publishers: MuPublishers;
+export interface MuComicPublisher {
+  mu_publishers: MuPublisher;
 }
 
-export interface MuCategories {
+export interface MuCategory {
   title: string;
   slug: string;
 }
 
 export interface MuComicCategory {
-  mu_categories: MuCategories;
+  mu_categories: MuCategory;
   positive_vote: number;
   negative_vote: number;
 }
 
-export interface MuComics {
-  mu_comic_publishers: MuComicPublishers;
+export interface MuComic {
+  mu_comic_publishers: MuComicPublisher;
   licensed_in_english: boolean;
-  mu_comic_categories: MuComicCategories;
+  mu_comic_categories: MuComicCategory;
 }
 
 export interface Comic {
@@ -110,10 +110,10 @@ export interface Comic {
   hid: string;
   title: string;
   country: string;
-  links: Links;
+  links: Link;
   last_chapter: number;
   chapter_count: number;
-  dempgraphic: number;
+  demographic: number;
   hentai: boolean;
   user_follow_count: number;
   follow_rank: number;
@@ -131,12 +131,12 @@ export interface Comic {
   final_volume: null;
   noindex: boolean;
   adsense: boolean;
-  recommendations: Recommendations[];
+  recommendations: Recommendation[];
   relate_from: RelateFrom[];
   md_titles: MdTitle[];
   md_comic_md_genres: MdGenre[];
-  md_covers: MdCovers[];
-  mu_comics: MuComics;
+  md_covers: MdCover[];
+  mu_comics: MuComic;
   iso639_1: string;
   lang_name: string;
   lang_native: string;
