@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-  TopMangaApiResponse,
+  MangaApiResponse,
   RankDetails,
   ComicContentApiResponse,
   ComicContent,
@@ -14,14 +14,28 @@ export const mangaApi = createApi({
     getTopManga: builder.query<RankDetails[], void>({
       query: () =>
         "top?type=trending&comic_types=manga&accept_mature_content=false",
-      transformResponse: (response: TopMangaApiResponse) => response.rank ?? [],
+      transformResponse: (response: MangaApiResponse) => response.rank ?? [],
     }),
     // Call to get specific comic's information.
     getComicContent: builder.query<ComicContent, string>({
       query: (name) => `comic/${name}`,
       transformResponse: (response: ComicContentApiResponse) => response.data,
     }),
+    getTopManwha: builder.query<RankDetails[], void>({
+      query: () =>
+        "top?type=trending&comic_types=manwha&accept_mature_content=false",
+      transformResponse: (response: MangaApiResponse) => response.rank ?? [],
+    }),
+    getTopManhua: builder.query<RankDetails[], void>({
+      query: () =>
+        "top?type=trending&comic_types=manhua&accept_mature_content=false",
+      transformResponse: (response: MangaApiResponse) => response.rank ?? [],
+    }),
   }),
 });
 
-export const { useGetTopMangaQuery, useGetComicContentQuery } = mangaApi;
+export const {
+  useGetTopMangaQuery,
+  useGetComicContentQuery,
+  useGetTopManwhaQuery,
+} = mangaApi;
