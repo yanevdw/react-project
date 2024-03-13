@@ -74,7 +74,7 @@ export interface MdTitle {
 
 export interface MdGenre {
   name: string;
-  type?: string;
+  type: string | null;
   slug: string;
   group: string;
 }
