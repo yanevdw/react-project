@@ -1,41 +1,35 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import axios from "axios";
 import {
-  MangaApiResponse,
+  // MangaApiResponse,
   RankDetails,
   ComicContentApiResponse,
-  ComicContent,
+  // ComicContent,
+  // ComicContentApiResponse,
 } from "../models/state";
 
-export const mangaApi = createApi({
-  reducerPath: "mangaApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.comick.fun/" }),
-  endpoints: (builder) => ({
-    // Call to get the top/trending manga.
-    getTopManga: builder.query<RankDetails[], void>({
-      query: () =>
-        "top?type=trending&comic_types=manga&accept_mature_content=false",
-      transformResponse: (response: MangaApiResponse) => response.rank ?? [],
-    }),
-    // Call to get specific comic's information.
-    getComicContent: builder.query<ComicContent, string>({
-      query: (name) => `comic/${name}`,
-      transformResponse: (response: ComicContentApiResponse) => response.data,
-    }),
-    getTopManwha: builder.query<RankDetails[], void>({
-      query: () =>
-        "top?type=trending&comic_types=manwha&accept_mature_content=false",
-      transformResponse: (response: MangaApiResponse) => response.rank ?? [],
-    }),
-    getTopManhua: builder.query<RankDetails[], void>({
-      query: () =>
-        "top?type=trending&comic_types=manhua&accept_mature_content=false",
-      transformResponse: (response: MangaApiResponse) => response.rank ?? [],
-    }),
-  }),
-});
+export async function fetchTopManga(): Promise<RankDetails[]> {
+  const response = await axios.get(
+    "https://api.comick.fun/top?type=trending&comic_types=manga&accept_mature_content=false"
+  );
+  return response.data.rank;
+}
+export async function fetchComicContent(
+  comicName: string
+): Promise<ComicContentApiResponse> {
+  const response = await axios.get(`https://api.comick.fun/comic/${comicName}`);
+  return response.data;
+}
 
-export const {
-  useGetTopMangaQuery,
-  useGetComicContentQuery,
-  useGetTopManwhaQuery,
-} = mangaApi;
+export async function fetchTopManwha(): Promise<RankDetails[]> {
+  const response = await axios.get(
+    "https://api.comick.fun/top?type=trending&comic_types=manwha&accept_mature_content=false"
+  );
+  return response.data.rank;
+}
+
+export async function fetchTopManhua(): Promise<RankDetails[]> {
+  const response = await axios.get(
+    "https://api.comick.fun/top?type=trending&comic_types=manwha&accept_mature_content=false"
+  );
+  return response.data.rank;
+}
