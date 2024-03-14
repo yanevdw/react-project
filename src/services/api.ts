@@ -25,7 +25,7 @@ export async function fetchTopManwha(): Promise<RankDetails[]> {
 // Call the API to get the top/trending manhua.
 export async function fetchTopManhua(): Promise<RankDetails[]> {
   const response = await axios.get(
-    "https://api.comick.fun/top?type=trending&comic_types=manwha&accept_mature_content=false"
+    "https://api.comick.fun/top?type=trending&comic_types=manhua&accept_mature_content=false"
   );
   return response.data.rank;
 }
