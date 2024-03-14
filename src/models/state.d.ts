@@ -166,3 +166,80 @@ export interface ComicContent {
 }
 
 type ComicContentApiResponse = { data: ComicContent };
+
+export interface Chapter {
+  id: number;
+  chap: string;
+  title: any;
+  vol: any;
+  lang: string;
+  created_at: string;
+  updated_at: string;
+  up_count: number;
+  down_count: number;
+  is_the_last_chapter: boolean;
+  group_name: string[];
+  hid: string;
+  identities: null;
+  md_chapters_groups: MdChaptersGroup[];
+}
+
+export interface MdChaptersGroup {
+  md_groups: MdGroups;
+}
+
+export interface MdGroups {
+  title: string;
+  slug: string;
+}
+
+export interface ChapterResult {
+  chapters: Chapter[];
+  total: number;
+  limit: number;
+}
+
+type ChaptersResponse = { result: ChapterResult };
+
+export interface MdImage {
+  h: number;
+  w: number;
+  name: string;
+  s: number;
+  b2key: string;
+  optimized?: number;
+}
+
+export interface MdChaptersGroup {
+  md_group_id: number;
+  md_groups: MdGroups;
+}
+
+export interface MdGroups {
+  slug: string;
+  title: string;
+}
+
+export interface ChapterContent {
+  id: number;
+  chap: string;
+  vol: any;
+  title: any;
+  hid: string;
+  group_name: string[];
+  chapter_id: any;
+  created_at: string;
+  updated_at: string;
+  crawled_at: string;
+  mdid: any;
+  comment_count: number;
+  up_count: number;
+  down_count: number;
+  status: string;
+  adsense: boolean;
+  lang: string;
+  is_the_last_chapter: boolean;
+  md_comics: MdComics;
+  md_images: MdImage[];
+  md_chapters_groups: MdChaptersGroup[];
+}
