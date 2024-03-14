@@ -1,11 +1,5 @@
 import axios from "axios";
-import {
-  // MangaApiResponse,
-  RankDetails,
-  ComicContentApiResponse,
-  // ComicContent,
-  // ComicContentApiResponse,
-} from "../models/state";
+import { RankDetails, ComicContentApiResponse } from "../models/state";
 
 export async function fetchTopManga(): Promise<RankDetails[]> {
   const response = await axios.get(
