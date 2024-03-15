@@ -5,7 +5,7 @@ export interface RankDetails {
   content_rating: string;
   genres: number[];
   last_chapter: number;
-  md_covers: MdCover;
+  md_covers: MdCover[];
 }
 
 export interface MdCover {
