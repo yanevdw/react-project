@@ -41,11 +41,11 @@ function TopManga() {
     .slice(0, 10);
 
   return (
-    <div className="top-manga-container w-full h-3/10 carousel carousel-center p space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
+    <div className="top-manga-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
       {topTenManga.map((mangaRec) => (
         <div
           key={mangaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer"
+          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
         >
           <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
             {topMangaResults.indexOf(mangaRec) + 1}
@@ -55,7 +55,7 @@ function TopManga() {
             alt="Manga Cover Image"
             className="rounded-box h-full w-full shadow-custom"
           ></img>
-          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0  s">
+          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
             <p className="p-2 font-sans text-white">{mangaRec.title}</p>
           </div>
         </div>
@@ -90,11 +90,11 @@ function TopManhwa() {
     .slice(0, 10);
 
   return (
-    <div className="top-manhwa-container w-full h-3/10 carousel carousel-center p space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
+    <div className="top-manhwa-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
       {topTenManhwa.map((manhwaRec) => (
         <div
           key={manhwaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer"
+          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
         >
           <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
             {topManhwaResults.indexOf(manhwaRec) + 1}
@@ -104,7 +104,7 @@ function TopManhwa() {
             alt="Manga Cover Image"
             className="rounded-box h-full w-full shadow-custom"
           ></img>
-          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0  s">
+          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
             <p className="p-2 font-sans text-white">{manhwaRec.title}</p>
           </div>
         </div>
@@ -139,11 +139,11 @@ function TopManhua() {
     .slice(0, 10);
 
   return (
-    <div className="top-manhua-container w-full h-3/10 carousel carousel-center p space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4">
+    <div className="top-manhua-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4">
       {topTenManhua.map((manhuaRec) => (
         <div
           key={manhuaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer"
+          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
         >
           <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-bold font-sans text-md">
             {topManhuaResults.indexOf(manhuaRec) + 1}
