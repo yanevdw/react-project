@@ -18,10 +18,14 @@ function Home() {
 export default Home;
 
 function TopManga() {
-  const { data: topMangaResults } = useQuery({
+  const { data: topMangaResults, error } = useQuery({
     queryKey: [`fetchTopManga`],
     queryFn: () => fetchTopManga(),
   });
+
+  if (error) {
+    console.error("An unxepected error occurred: " + error);
+  }
 
   if (topMangaResults) {
     const topTenManga: RankDetails[] = topMangaResults.slice(0, 10);
@@ -52,10 +56,14 @@ function TopManga() {
 }
 
 function TopManhwa() {
-  const { data: topManhwaResults } = useQuery({
+  const { data: topManhwaResults, error } = useQuery({
     queryKey: [`fetchTopManhwa`],
     queryFn: () => fetchTopManhwa(),
   });
+
+  if (error) {
+    console.error("An unxepected error occurred: " + error);
+  }
 
   if (topManhwaResults) {
     const topTenManga: RankDetails[] = topManhwaResults.slice(0, 10);
@@ -86,10 +94,14 @@ function TopManhwa() {
 }
 
 function TopManhua() {
-  const { data: topManhuaResults } = useQuery({
+  const { data: topManhuaResults, error } = useQuery({
     queryKey: [`fetchTopManhua`],
     queryFn: () => fetchTopManhua(),
   });
+
+  if (error) {
+    console.error("An unxepected error occurred: " + error);
+  }
 
   if (topManhuaResults) {
     const topTenManhua: RankDetails[] = topManhuaResults.slice(0, 10);
