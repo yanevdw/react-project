@@ -35,7 +35,10 @@ function TopManga() {
     );
   }
 
-  const topTenManga: RankDetails[] = topMangaResults.slice(0, 10);
+  // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
+  const topTenManga: RankDetails[] = topMangaResults
+    .filter((comic) => comic.md_covers?.[0]?.b2key)
+    .slice(0, 10);
 
   return (
     <div className="top-manga-container w-full h-3/10 carousel carousel-center p space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
@@ -81,7 +84,10 @@ function TopManhwa() {
     );
   }
 
-  const topTenManhwa: RankDetails[] = topManhwaResults.slice(0, 10);
+  // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
+  const topTenManhwa: RankDetails[] = topManhwaResults
+    .filter((comic) => comic.md_covers?.[0]?.b2key)
+    .slice(0, 10);
 
   return (
     <div className="top-manhwa-container w-full h-3/10 carousel carousel-center p space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
@@ -127,7 +133,10 @@ function TopManhua() {
     );
   }
 
-  const topTenManhua: RankDetails[] = topManhuaResults.slice(0, 10);
+  // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
+  const topTenManhua: RankDetails[] = topManhuaResults
+    .filter((comic) => comic.md_covers?.[0]?.b2key)
+    .slice(0, 10);
 
   return (
     <div className="top-manhua-container w-full h-3/10 carousel carousel-center p space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4">
