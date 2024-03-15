@@ -38,12 +38,6 @@ export async function fetchComicContent(
   return response.data;
 }
 
-//Call the API to get any images (covers/chapter/etcetera) using the filename of the image.
-export async function fetchComicImage(imageName: string): Promise<string> {
-  const response = await axios.get(`https://meo3.comick.pictures/${imageName}`);
-  return response.data;
-}
-
 //Call the API to get a specified comic's chapters based on the comic's hid.
 export async function fetchComicChapters(
   comicHid: string
