@@ -14,6 +14,9 @@ export default {
         "1/10": "10%",
         "3/10": "30%",
       },
+      width: {
+        "1/10": "10%",
+      },
     },
   },
   plugins: [require("daisyui")],
