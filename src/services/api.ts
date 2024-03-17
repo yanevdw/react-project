@@ -18,7 +18,7 @@ export async function fetchTopManga(): Promise<RankDetails[]> {
 // Call the API to get the top/trending manhwa.
 export async function fetchTopManhwa(): Promise<RankDetails[]> {
   const response = await axios.get(
-    `${baseURL}?type=trending&comic_types=manhwa&accept_mature_content=false`
+    `${baseURL}top?type=trending&comic_types=manhwa&accept_mature_content=false`
   );
   return response.data.rank;
 }
@@ -26,7 +26,7 @@ export async function fetchTopManhwa(): Promise<RankDetails[]> {
 // Call the API to get the top/trending manhua.
 export async function fetchTopManhua(): Promise<RankDetails[]> {
   const response = await axios.get(
-    `${baseURL}/top?type=trending&comic_types=manhua&accept_mature_content=false`
+    `${baseURL}top?type=trending&comic_types=manhua&accept_mature_content=false`
   );
   return response.data.rank;
 }
