@@ -51,11 +51,13 @@ function TopManga() {
       {topTenManga.map((mangaRec) => (
         <div
           key={mangaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
+          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
         >
-          <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
+          {/* This code may be used in a later stage, if not, I will remove it. */}
+
+          {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
             {topMangaResults.indexOf(mangaRec) + 1}
-          </span>
+          </span> */}
           <img
             src={`https://meo3.comick.pictures/${mangaRec.md_covers[0].b2key}`}
             alt="Manga Cover Image"
@@ -106,11 +108,13 @@ function TopManhwa() {
       {topTenManhwa.map((manhwaRec) => (
         <div
           key={manhwaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
+          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
         >
-          <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
+          {/* This code may be used in a later stage, if not, I will remove it. */}
+
+          {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
             {topManhwaResults.indexOf(manhwaRec) + 1}
-          </span>
+          </span> */}
           <img
             src={`https://meo3.comick.pictures/${manhwaRec.md_covers[0].b2key}`}
             alt="Manga Cover Image"
@@ -161,11 +165,13 @@ function TopManhua() {
       {topTenManhua.map((manhuaRec) => (
         <div
           key={manhuaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative indicator first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
+          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
         >
-          <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-bold font-sans text-md">
+          {/* This code may be used in a later stage, if not, I will remove it. */}
+
+          {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-bold font-sans text-md">
             {topManhuaResults.indexOf(manhuaRec) + 1}
-          </span>
+          </span> */}
           <img
             src={`https://meo3.comick.pictures/${manhuaRec.md_covers[0].b2key}`}
             alt="Manga Cover Image"
