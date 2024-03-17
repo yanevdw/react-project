@@ -27,7 +27,13 @@ function TopManga() {
     console.error("An unexpected error occurred: " + error);
   }
 
-  if (!topMangaResults) {
+  if (
+    !(
+      topMangaResults?.[0]?.md_covers?.[0]?.b2key ||
+      topMangaResults?.[0]?.slug ||
+      topMangaResults?.[0]?.title
+    )
+  ) {
     return (
       <div className="top-manga-container w-full h-3/10 text-center">
         <p className="p-2 font-sans text-white">There is no manga to display</p>
@@ -74,7 +80,13 @@ function TopManhwa() {
     console.error("An unexpected error occurred: " + error);
   }
 
-  if (!topManhwaResults) {
+  if (
+    !(
+      topManhwaResults?.[0]?.md_covers?.[0]?.b2key ||
+      topManhwaResults?.[0]?.slug ||
+      topManhwaResults?.[0]?.title
+    )
+  ) {
     return (
       <div className="top-manhwa-container w-full h-3/10 text-center">
         <p className="p-2 font-sans text-white">
@@ -123,7 +135,13 @@ function TopManhua() {
     console.error("An unexpected error occurred: " + error);
   }
 
-  if (!topManhuaResults) {
+  if (
+    !(
+      topManhuaResults?.[0]?.md_covers?.[0]?.b2key ||
+      topManhuaResults?.[0]?.slug ||
+      topManhuaResults?.[0]?.title
+    )
+  ) {
     return (
       <div className="top-manhua-container w-full h-3/10 text-center">
         <p className="p-2 font-sans text-white">
