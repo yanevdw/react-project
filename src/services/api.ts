@@ -1,9 +1,9 @@
 import axios from "axios";
 import {
   RankDetails,
-  ComicContentApiResponse,
   ChaptersResponse,
   ChapterContent,
+  ComicContent,
 } from "../models/state";
 
 const baseURL = "https://api.comick.fun/";
@@ -34,7 +34,7 @@ export async function fetchTopManhua(): Promise<RankDetails[]> {
 // Call the API to get a specified comic's content using the slug assoicated with the comic.
 export async function fetchComicContent(
   comicName: string
-): Promise<ComicContentApiResponse> {
+): Promise<ComicContent> {
   const response = await axios.get(`${baseURL}comic/${comicName}`);
   return response.data;
 }
