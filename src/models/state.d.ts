@@ -72,6 +72,10 @@ export interface MdTitle {
   lang: string;
 }
 
+export interface MdComicMdGenre {
+  md_genres: MdGenre;
+}
+
 export interface MdGenre {
   name: string;
   type: string | null;
@@ -134,7 +138,7 @@ export interface Comic {
   recommendations: Recommendation[];
   relate_from: RelateFrom[];
   md_titles: MdTitle[];
-  md_comic_md_genres: MdGenre[];
+  md_comic_md_genres: MdComicMdGenre[];
   md_covers: MdCover[];
   mu_comics: MuComic;
   iso639_1: string;
