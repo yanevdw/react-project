@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { RankDetails } from "../models/state";
 import { fetchTopManga, fetchTopManhwa, fetchTopManhua } from "../services/api";
+import ComicPopup from "./ComicPopup";
 
 function Home() {
   return (
@@ -47,28 +48,51 @@ function TopManga() {
     .slice(0, 10);
 
   return (
-    <div className="top-manga-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
-      {topTenManga.map((mangaRec) => (
-        <div
-          key={mangaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
-        >
-          {/* This code may be used in a later stage, if not, I will remove it. */}
+    <>
+      <div className="top-manga-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
+        {topTenManga.map((mangaRec) => (
+          <div
+            key={mangaRec.slug}
+            className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
+            onClick={() =>
+              (
+                document.getElementById(
+                  `manga-comic-popup-${mangaRec.slug}`
+                ) as HTMLDialogElement
+              ).showModal()
+            }
+          >
+            <dialog
+              id={`manga-comic-popup-${mangaRec.slug}`}
+              className="comic-popup border-none outline-none w-[90%] h-3/5 rounded-lg bg-[rgba(255,255,255,0.35)] backdrop-blur  md:w-3/5 lg:w-3/5"
+            >
+              <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
+                  ✕
+                </button>
+              </form>
+              <ComicPopup comicSlug={mangaRec.slug} />
+            </dialog>
+            {/* This code may be used in a later stage, if not, I will remove it. */}
 
-          {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
+            {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
             {topMangaResults.indexOf(mangaRec) + 1}
           </span> */}
-          <img
-            src={`https://meo3.comick.pictures/${mangaRec.md_covers[0].b2key}`}
-            alt="Manga Cover Image"
-            className="rounded-box h-full w-full shadow-custom"
-          ></img>
-          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
-            <p className="p-2 font-sans text-white">{mangaRec.title}</p>
+            <img
+              src={`https://meo3.comick.pictures/${mangaRec.md_covers[0].b2key}`}
+              alt="Manga Cover Image"
+              className="rounded-box h-full w-full shadow-custom"
+            ></img>
+            <div className="image-overlay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
+              <p className="p-2 font-sans text-white">{mangaRec.title}</p>
+            </div>
+            {/* {showComicPopup && mangaRec.slug === selectedComic ? (
+              <ComicPopup />
+            ) : null} */}
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -109,7 +133,9 @@ function TopManhwa() {
         <div
           key={manhwaRec.slug}
           className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
+          // onClick={() => setShowComicPopup(!showComicPopup)}
         >
+          {/* {showComicPopup ? <ComicPopup /> : null} */}
           {/* This code may be used in a later stage, if not, I will remove it. */}
 
           {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
@@ -120,7 +146,7 @@ function TopManhwa() {
             alt="Manga Cover Image"
             className="rounded-box h-full w-full shadow-custom"
           ></img>
-          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
+          <div className="image-overlay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
             <p className="p-2 font-sans text-white">{manhwaRec.title}</p>
           </div>
         </div>
@@ -177,7 +203,7 @@ function TopManhua() {
             alt="Manga Cover Image"
             className="rounded-box h-full w-full shadow-custom"
           ></img>
-          <div className="image-ovelay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
+          <div className="image-overlay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
             <p className="p-2 font-sans text-white">{manhuaRec.title}</p>
           </div>
         </div>
