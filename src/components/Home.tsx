@@ -64,7 +64,7 @@ function TopManga() {
           >
             <dialog
               id={`manga-comic-popup-${mangaRec.slug}`}
-              className="comic-popup border-none outline-none w-[90%] h-3/5 rounded-lg bg-[rgba(255,255,255,0.35)] backdrop-blur  md:w-3/5 lg:w-3/5"
+              className="comic-popup border-none outline-none w-90/100 h-3/5 rounded-lg bg-frost backdrop-blur  md:w-3/5 lg:w-3/5"
             >
               <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
@@ -133,9 +133,25 @@ function TopManhwa() {
         <div
           key={manhwaRec.slug}
           className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
-          // onClick={() => setShowComicPopup(!showComicPopup)}
+          onClick={() =>
+            (
+              document.getElementById(
+                `manga-comic-popup-${manhwaRec.slug}`
+              ) as HTMLDialogElement
+            ).showModal()
+          }
         >
-          {/* {showComicPopup ? <ComicPopup /> : null} */}
+          <dialog
+            id={`manga-comic-popup-${manhwaRec.slug}`}
+            className="comic-popup border-none outline-none w-90/100 h-3/5 rounded-lg bg-frost backdrop-blur  md:w-3/5 lg:w-3/5"
+          >
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
+                ✕
+              </button>
+            </form>
+            <ComicPopup comicSlug={manhwaRec.slug} />
+          </dialog>
           {/* This code may be used in a later stage, if not, I will remove it. */}
 
           {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
@@ -192,7 +208,25 @@ function TopManhua() {
         <div
           key={manhuaRec.slug}
           className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
+          onClick={() =>
+            (
+              document.getElementById(
+                `manga-comic-popup-${manhuaRec.slug}`
+              ) as HTMLDialogElement
+            ).showModal()
+          }
         >
+          <dialog
+            id={`manga-comic-popup-${manhuaRec.slug}`}
+            className="comic-popup border-none outline-none w-90/100 h-3/5 rounded-lg bg-frost backdrop-blur  md:w-3/5 lg:w-3/5"
+          >
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
+                ✕
+              </button>
+            </form>
+            <ComicPopup comicSlug={manhuaRec.slug} />
+          </dialog>
           {/* This code may be used in a later stage, if not, I will remove it. */}
 
           {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-bold font-sans text-md">
