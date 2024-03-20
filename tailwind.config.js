@@ -7,8 +7,12 @@ export default {
         custom: "6px 3px 10px -5px rgba(255,255,255,0.51)",
       },
       colors: {
-        "blue-purple": "rgb(0, 8, 52)",
+        plum: "rgb(23, 9, 29)",
         "purple-1000": "rgb(97, 83, 204)",
+        "plum-300": "rgb(73, 43, 84)",
+        "plum-500": "rgb(40, 17, 48)",
+        "blue-munsell": "rgb(27, 154, 170)",
+        "purple-power": "rgb(129, 110, 148)",
       },
       height: {
         "1/10": "10%",

@@ -20,16 +20,16 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
       </p>
     );
   }
-  const comicGenres = comicContentResults.comic.md_comic_md_genres.slice(0, 4);
+  const comicGenres = comicContentResults.comic.md_comic_md_genres.slice(0, 3);
 
   return (
     <div className="popup-container h-full w-full px-3 py-3">
-      <div className="popup-content-container flex flex-col h-full  bg-blue-purple px-4 py-4 rounded-md">
+      <div className="popup-content-container flex flex-col h-full  bg-plum-500 px-4 py-4 rounded-md">
         <div className="comic-quick-facts-container mb-2 w-full h-1/10 flex justify-start gap-4">
           <h2 className="font-sans font-semibold text-lg">
             {comicContentResults.comic.title}
           </h2>
-          <label className="bg-purple-1000 px-4 py-1 rounded-3xl flex gap-2">
+          <label className="bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2">
             <IoPerson className="mt-1" />
             {comicContentResults.comic.follow_count}
           </label>
@@ -41,10 +41,10 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
             className="h-full w-full object-cover object-top"
           />
         </div>
-        <div className="comic-genres-container flex flex-row w-full h-1/5 justify-between mt-4 items-center md:justify-start md:gap-4 lg:justify-start lg:gap-4">
+        <div className="comic-genres-container flex flex-row h-2/5 justify-start items-start mt-4 gap-2 flex-wrap md:justify-start md:gap-4 lg:justify-start lg:gap-4 overflow-x-clip">
           {comicGenres.map((genre) => (
             <label
-              className="bg-purple-1000 px-2 py-1 rounded-3xl"
+              className="bg-blue-munsell px-3 py-1 rounded-3xl"
               key={genre.md_genres.slug}
             >
               {genre.md_genres.name}
@@ -60,7 +60,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
           </p>
         </div>
         <div className="comic-popup-button-container h-1/10 flex justify-end">
-          <button className="bg-purple-1000 p-2 rounded-lg">Read Comic</button>
+          <button className="bg-purple-power p-2 rounded-lg">Read Comic</button>
         </div>
       </div>
     </div>
