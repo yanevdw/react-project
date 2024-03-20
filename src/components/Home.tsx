@@ -49,7 +49,7 @@ function TopManga() {
 
   return (
     <>
-      <div className="top-manga-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
+      <div className="top-manga-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
         {topTenManga.map((mangaRec) => (
           <div
             key={mangaRec.slug}
@@ -81,9 +81,9 @@ function TopManga() {
             <img
               src={`https://meo3.comick.pictures/${mangaRec.md_covers[0].b2key}`}
               alt="Manga Cover Image"
-              className="rounded-box h-full w-full shadow-custom"
+              className="rounded-lg h-full w-full shadow-custom"
             ></img>
-            <div className="image-overlay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
+            <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
               <p className="p-2 font-sans text-white">{mangaRec.title}</p>
             </div>
             {/* {showComicPopup && mangaRec.slug === selectedComic ? (
@@ -128,7 +128,7 @@ function TopManhwa() {
     .slice(0, 10);
 
   return (
-    <div className="top-manhwa-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
+    <div className="top-manhwa-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
       {topTenManhwa.map((manhwaRec) => (
         <div
           key={manhwaRec.slug}
@@ -144,9 +144,9 @@ function TopManhwa() {
           <img
             src={`https://meo3.comick.pictures/${manhwaRec.md_covers[0].b2key}`}
             alt="Manga Cover Image"
-            className="rounded-box h-full w-full shadow-custom"
+            className="rounded-lg h-full w-full shadow-custom"
           ></img>
-          <div className="image-overlay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
+          <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
             <p className="p-2 font-sans text-white">{manhwaRec.title}</p>
           </div>
         </div>
@@ -187,7 +187,7 @@ function TopManhua() {
     .slice(0, 10);
 
   return (
-    <div className="top-manhua-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-box bg-transparent overflow-y-hidden flex align-center py-4">
+    <div className="top-manhua-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4">
       {topTenManhua.map((manhuaRec) => (
         <div
           key={manhuaRec.slug}
@@ -201,9 +201,9 @@ function TopManhua() {
           <img
             src={`https://meo3.comick.pictures/${manhuaRec.md_covers[0].b2key}`}
             alt="Manga Cover Image"
-            className="rounded-box h-full w-full shadow-custom"
+            className="rounded-lg h-full w-full shadow-custom"
           ></img>
-          <div className="image-overlay h-full w-full rounded-box bg-gradient-to-t from-indigo-950 absolute flex items-end justify-center text-center p-0 m-0">
+          <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
             <p className="p-2 font-sans text-white">{manhuaRec.title}</p>
           </div>
         </div>
