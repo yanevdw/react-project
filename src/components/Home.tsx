@@ -1,27 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 import { RankDetails } from "../models/state";
-import { fetchTopManga, fetchTopManhwa, fetchTopManhua } from "../services/api";
+import { fetchTopComics } from "../services/api";
 import ComicPopup from "./ComicPopup";
 
 function Home() {
   return (
     <>
       <h2 className="text-white font-semibold text-xl">Top Manga</h2>
-      <TopManga />
+      <TopComicComponent comicType="Manga" />
       <h2 className="text-white font-semibold text-xl">Top Manhwa</h2>
-      <TopManhwa />
+      <TopComicComponent comicType="Manhwa" />
       <h2 className="text-white font-semibold text-xl">Top Manhua</h2>
-      <TopManhua />
+      <TopComicComponent comicType="Manhua" />
     </>
   );
 }
 
 export default Home;
 
-function TopManga() {
-  const { data: topMangaResults, error } = useQuery({
-    queryKey: [`fetchTopManga`],
-    queryFn: () => fetchTopManga(),
+function TopComicComponent({ comicType }: { comicType: string }) {
+  const { data: topComicResults, error } = useQuery({
+    queryKey: [`fetchTop${comicType}`],
+    queryFn: () => fetchTopComics(comicType.toLowerCase()),
   });
 
   if (error) {
@@ -30,40 +30,46 @@ function TopManga() {
 
   if (
     !(
-      topMangaResults?.[0]?.md_covers?.[0]?.b2key ||
-      topMangaResults?.[0]?.slug ||
-      topMangaResults?.[0]?.title
+      topComicResults?.[0]?.md_covers?.[0]?.b2key ||
+      topComicResults?.[0]?.slug ||
+      topComicResults?.[0]?.title
     )
   ) {
     return (
-      <div className="top-manga-container w-full h-3/10 text-center">
-        <p className="p-2 font-sans text-white">There is no manga to display</p>
+      <div
+        className={`top-${comicType.toLowerCase()}-container w-full h-3/10 text-center`}
+      >
+        <p className="p-2 font-sans text-white">
+          There is no {comicType.toLowerCase()} to display
+        </p>
       </div>
     );
   }
 
   // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
-  const topTenManga: RankDetails[] = topMangaResults
-    .filter((comic) => comic.md_covers?.[0]?.b2key)
+  const topTenComics: RankDetails[] = topComicResults
+    .filter((comic: RankDetails) => comic.md_covers?.[0]?.b2key)
     .slice(0, 10);
 
   return (
     <>
-      <div className="top-manga-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
-        {topTenManga.map((mangaRec) => (
+      <div
+        className={`top-${comicType.toLowerCase()}-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4 mb-4`}
+      >
+        {topTenComics.map((comicRec: RankDetails) => (
           <div
-            key={mangaRec.slug}
+            key={comicRec.slug}
             className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
             onClick={() =>
               (
                 document.getElementById(
-                  `manga-comic-popup-${mangaRec.slug}`
+                  `${comicType.toLowerCase()}-comic-popup-${comicRec.slug}`
                 ) as HTMLDialogElement
               ).showModal()
             }
           >
             <dialog
-              id={`manga-comic-popup-${mangaRec.slug}`}
+              id={`${comicType.toLowerCase()}-comic-popup-${comicRec.slug}`}
               className="comic-popup border-none outline-none w-90/100 h-3/5 rounded-lg bg-frost backdrop-blur  md:w-3/5 lg:w-3/5"
             >
               <form method="dialog">
@@ -71,7 +77,7 @@ function TopManga() {
                   ✕
                 </button>
               </form>
-              <ComicPopup comicSlug={mangaRec.slug} />
+              <ComicPopup comicSlug={comicRec.slug} />
             </dialog>
             {/* This code may be used in a later stage, if not, I will remove it. */}
 
@@ -79,12 +85,12 @@ function TopManga() {
             {topMangaResults.indexOf(mangaRec) + 1}
           </span> */}
             <img
-              src={`https://meo3.comick.pictures/${mangaRec.md_covers[0].b2key}`}
-              alt="Manga Cover Image"
+              src={`https://meo3.comick.pictures/${comicRec.md_covers[0].b2key}`}
+              alt={`${comicType} Cover Image`}
               className="rounded-lg h-full w-full shadow-custom"
             ></img>
             <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
-              <p className="p-2 font-sans text-white">{mangaRec.title}</p>
+              <p className="p-2 font-sans text-white">{comicRec.title}</p>
             </div>
             {/* {showComicPopup && mangaRec.slug === selectedComic ? (
               <ComicPopup />
@@ -93,155 +99,5 @@ function TopManga() {
         ))}
       </div>
     </>
-  );
-}
-
-function TopManhwa() {
-  const { data: topManhwaResults, error } = useQuery({
-    queryKey: [`fetchTopManhwa`],
-    queryFn: () => fetchTopManhwa(),
-  });
-
-  if (error) {
-    console.error("An unexpected error occurred: " + error);
-  }
-
-  if (
-    !(
-      topManhwaResults?.[0]?.md_covers?.[0]?.b2key ||
-      topManhwaResults?.[0]?.slug ||
-      topManhwaResults?.[0]?.title
-    )
-  ) {
-    return (
-      <div className="top-manhwa-container w-full h-3/10 text-center">
-        <p className="p-2 font-sans text-white">
-          There is no manhwa to display
-        </p>
-      </div>
-    );
-  }
-
-  // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
-  const topTenManhwa: RankDetails[] = topManhwaResults
-    .filter((comic) => comic.md_covers?.[0]?.b2key)
-    .slice(0, 10);
-
-  return (
-    <div className="top-manhwa-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4 mb-4">
-      {topTenManhwa.map((manhwaRec) => (
-        <div
-          key={manhwaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
-          onClick={() =>
-            (
-              document.getElementById(
-                `manga-comic-popup-${manhwaRec.slug}`
-              ) as HTMLDialogElement
-            ).showModal()
-          }
-        >
-          <dialog
-            id={`manga-comic-popup-${manhwaRec.slug}`}
-            className="comic-popup border-none outline-none w-90/100 h-3/5 rounded-lg bg-frost backdrop-blur  md:w-3/5 lg:w-3/5"
-          >
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
-                ✕
-              </button>
-            </form>
-            <ComicPopup comicSlug={manhwaRec.slug} />
-          </dialog>
-          {/* This code may be used in a later stage, if not, I will remove it. */}
-
-          {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-semibold font-sans">
-            {topManhwaResults.indexOf(manhwaRec) + 1}
-          </span> */}
-          <img
-            src={`https://meo3.comick.pictures/${manhwaRec.md_covers[0].b2key}`}
-            alt="Manga Cover Image"
-            className="rounded-lg h-full w-full shadow-custom"
-          ></img>
-          <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
-            <p className="p-2 font-sans text-white">{manhwaRec.title}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function TopManhua() {
-  const { data: topManhuaResults, error } = useQuery({
-    queryKey: [`fetchTopManhua`],
-    queryFn: () => fetchTopManhua(),
-  });
-
-  if (error) {
-    console.error("An unexpected error occurred: " + error);
-  }
-
-  if (
-    !(
-      topManhuaResults?.[0]?.md_covers?.[0]?.b2key ||
-      topManhuaResults?.[0]?.slug ||
-      topManhuaResults?.[0]?.title
-    )
-  ) {
-    return (
-      <div className="top-manhua-container w-full h-3/10 text-center">
-        <p className="p-2 font-sans text-white">
-          There is no manhua to display
-        </p>
-      </div>
-    );
-  }
-
-  // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
-  const topTenManhua: RankDetails[] = topManhuaResults
-    .filter((comic) => comic.md_covers?.[0]?.b2key)
-    .slice(0, 10);
-
-  return (
-    <div className="top-manhua-container w-full h-3/10 carousel carousel-center space-x-4 bg-neutral rounded-lg bg-transparent overflow-y-hidden flex align-center py-4">
-      {topTenManhua.map((manhuaRec) => (
-        <div
-          key={manhuaRec.slug}
-          className="carousel-item w-2/6 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/10 lg:w-1/10"
-          onClick={() =>
-            (
-              document.getElementById(
-                `manga-comic-popup-${manhuaRec.slug}`
-              ) as HTMLDialogElement
-            ).showModal()
-          }
-        >
-          <dialog
-            id={`manga-comic-popup-${manhuaRec.slug}`}
-            className="comic-popup border-none outline-none w-90/100 h-3/5 rounded-lg bg-frost backdrop-blur  md:w-3/5 lg:w-3/5"
-          >
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
-                ✕
-              </button>
-            </form>
-            <ComicPopup comicSlug={manhuaRec.slug} />
-          </dialog>
-          {/* This code may be used in a later stage, if not, I will remove it. */}
-
-          {/* <span className="indicator-item badge badge-secondary px-2.5 py-3.5 border-none bg-purple-1000 text-white font-bold font-sans text-md">
-            {topManhuaResults.indexOf(manhuaRec) + 1}
-          </span> */}
-          <img
-            src={`https://meo3.comick.pictures/${manhuaRec.md_covers[0].b2key}`}
-            alt="Manga Cover Image"
-            className="rounded-lg h-full w-full shadow-custom"
-          ></img>
-          <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
-            <p className="p-2 font-sans text-white">{manhuaRec.title}</p>
-          </div>
-        </div>
-      ))}
-    </div>
   );
 }
