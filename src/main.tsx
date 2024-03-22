@@ -13,9 +13,9 @@ const router = createRouter({
   defaultPreload: "intent",
   defaultNotFoundComponent: () => {
     return (
-      <div className="flex flex-col justify-center items-center">
-        <GiSpiderWeb />
-        <h2 className="font-semibold text-whit text-lg">
+      <div className="h-full w-full flex flex-col items-center justify-center">
+        <GiSpiderWeb size={90} className="text-white" />
+        <h2 className="font-semibold text-white text-xl text-center">
           Oops! The page you are looking for got lost in the web and cannot be
           found.
         </h2>
