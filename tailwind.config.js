@@ -13,7 +13,7 @@ export default {
         "plum-500": "rgb(40, 17, 48)",
         "blue-munsell": "rgb(27, 154, 170)",
         "purple-power": "rgb(129, 110, 148)",
-        frost: "rgba(255,255,255,0.35)",
+        frost: "rgba(255, 255, 255, 0.35)",
       },
       height: {
         "1/10": "10%",
@@ -24,6 +24,7 @@ export default {
       },
       width: {
         "1/10": "10%",
+        "3/10": "30%",
       },
     },
   },
