@@ -12,11 +12,11 @@ const router = createRouter({
   defaultPreload: "intent",
   defaultNotFoundComponent: () => {
     return (
-      <div className="flex flex-col justify-center items-center">
-        <div className="m-4">Page Not Found!</div>
-        <Link to="/" className="underline text-blue-600">
-          Go Home
-        </Link>
+      <div className="flex justify-center items-center">
+        <h2 className="font-semibold text-white">
+          Oops! Page not found. Please navigate to a different page or try
+          again.
+        </h2>
       </div>
     );
   },
