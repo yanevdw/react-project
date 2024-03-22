@@ -1,5 +1,5 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
-import WebNavigation from "../components/WebNavigation";
+import DesktopNavigation from "../components/DesktopNavigation";
 
 import MobileNavigation from "../components/MobileNavigation";
 
@@ -12,7 +12,7 @@ export const Route = createRootRoute({
             Jorōgumo
           </h1>
           <div className="web-nav-container text-white w-3/10 hidden md:block lg:block xl:block 2xl:block">
-            <WebNavigation />
+            <DesktopNavigation />
           </div>
         </div>
         <div className="content-container px-6 h-4/5 overflow-y-scroll scroll-m-0 scroll-p-0">
