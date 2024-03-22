@@ -13,7 +13,7 @@ const router = createRouter({
   defaultPreload: "intent",
   defaultNotFoundComponent: () => {
     return (
-      <div className="h-full w-full flex flex-col items-center justify-center">
+      <div className="h-full w-full flex flex-col items-center justify-center gap-4">
         <GiSpiderWeb size={90} className="text-white" />
         <h2 className="font-semibold text-white text-xl text-center">
           Oops! The page you are looking for got lost in the web and cannot be
