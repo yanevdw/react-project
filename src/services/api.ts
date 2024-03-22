@@ -1,32 +1,18 @@
 import axios from "axios";
 import {
   RankDetails,
-  ComicContentApiResponse,
   ChaptersResponse,
   ChapterContent,
+  ComicContent,
 } from "../models/state";
 
 const baseURL = "https://api.comick.fun/";
-// Call the API to get the top/trending manga.
-export async function fetchTopManga(): Promise<RankDetails[]> {
+// Call the API to get the top/trending comics.
+export async function fetchTopComics(
+  comicType: string
+): Promise<RankDetails[]> {
   const response = await axios.get(
-    `${baseURL}top?type=trending&comic_types=manga&accept_mature_content=false`
-  );
-  return response.data.rank;
-}
-
-// Call the API to get the top/trending manhwa.
-export async function fetchTopManhwa(): Promise<RankDetails[]> {
-  const response = await axios.get(
-    `${baseURL}top?type=trending&comic_types=manhwa&accept_mature_content=false`
-  );
-  return response.data.rank;
-}
-
-// Call the API to get the top/trending manhua.
-export async function fetchTopManhua(): Promise<RankDetails[]> {
-  const response = await axios.get(
-    `${baseURL}top?type=trending&comic_types=manhua&accept_mature_content=false`
+    `${baseURL}top?type=trending&comic_types=${comicType}&accept_mature_content=false`
   );
   return response.data.rank;
 }
@@ -34,7 +20,7 @@ export async function fetchTopManhua(): Promise<RankDetails[]> {
 // Call the API to get a specified comic's content using the slug assoicated with the comic.
 export async function fetchComicContent(
   comicName: string
-): Promise<ComicContentApiResponse> {
+): Promise<ComicContent> {
   const response = await axios.get(`${baseURL}comic/${comicName}`);
   return response.data;
 }
