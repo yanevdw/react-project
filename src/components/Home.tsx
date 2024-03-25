@@ -92,9 +92,6 @@ function TopComicComponent({ comicType }: { comicType: string }) {
             <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
               <p className="p-2 font-sans text-white">{comicRec.title}</p>
             </div>
-            {/* {showComicPopup && mangaRec.slug === selectedComic ? (
-              <ComicPopup />
-            ) : null} */}
           </div>
         ))}
       </div>
