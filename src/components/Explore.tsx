@@ -102,7 +102,7 @@ function Explore() {
         )}
       </Formik>
       {searchedComicName && (
-        <SearchComicsByNameComponent comicName={searchedComicName} />
+        <SearchComicsByName comicName={searchedComicName} />
       )}
       <h2 className="text-white text-lg font-semibold">Quick filters</h2>
       <h3 className="text-white text-md mt-3 mb-3">Genres</h3>
@@ -118,14 +118,14 @@ function Explore() {
           </label>
         ))}
       </div>
-      {selectedGenre && <SearchComicsByGenreComponent genre={selectedGenre} />}
+      {selectedGenre && <SearchComicsByGenre genre={selectedGenre} />}
     </>
   );
 }
 
 export default Explore;
 
-function SearchComicsByNameComponent({ comicName }: { comicName: string }) {
+function SearchComicsByName({ comicName }: { comicName: string }) {
   const {
     data: searchComicByNameResults,
     error,
@@ -168,7 +168,7 @@ function SearchComicsByNameComponent({ comicName }: { comicName: string }) {
 
   return <SearchResults results={searchComicByNameResults} />;
 }
-function SearchComicsByGenreComponent({ genre }: { genre: string }) {
+function SearchComicsByGenre({ genre }: { genre: string }) {
   const {
     data: searchComicByGenreResults,
     error,
