@@ -8,6 +8,7 @@ import {
 } from "../models/state";
 
 const baseURL = "https://api.comick.fun/";
+const baseSeachURL = `${baseURL}v1.0/search/`;
 // Call the API to get the top/trending comics.
 export async function fetchTopComics(
   comicType: string
@@ -49,7 +50,7 @@ export async function searchComicByGenre(
   comicGenre: string
 ): Promise<SearchComicContent[]> {
   const response = await axios.get(
-    `${baseURL}v1.0/search/?genres=${comicGenre}&page=1&limit=15&showall=false&t=false`
+    `${baseSeachURL}?genres=${comicGenre}&page=1&limit=15&showall=false&t=false`
   );
   return response.data;
 }
@@ -58,7 +59,7 @@ export async function searchComicByName(
   comicName: string
 ): Promise<SearchComicContent[]> {
   const response = await axios.get(
-    `${baseURL}v1.0/search/?q=${comicName}&page=1&limit=15&showall=false&t=false`
+    `${baseSeachURL}?q=${comicName}&page=1&limit=15&showall=false&t=false`
   );
   return response.data;
 }
