@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { searchComicByGenre } from "../../../services/api";
 import { GiSpiderWeb } from "react-icons/gi";
-import SearchComicsByName from "./SearchComicsByName";
 import SearchResults from "./SearchResults";
 
 function SearchComicsByGenre({ genre }: { genre: string }) {
