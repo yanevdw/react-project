@@ -1,8 +1,3 @@
-import { PiLightningFill, PiSwordFill, PiAlienFill } from "react-icons/pi";
-import { FaLaugh } from "react-icons/fa";
-import { FaHourglassHalf, FaWandMagicSparkles } from "react-icons/fa6";
-import { GiMagnifyingGlass, GiSpiderWeb } from "react-icons/gi";
-import { IoSunnySharp } from "react-icons/io5";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -10,6 +5,12 @@ import { searchComicByGenre, searchComicByName } from "../services/api";
 import { useQuery } from "@tanstack/react-query";
 import { SearchComicContent } from "../models/state";
 import ComicPopup from "./ComicPopup";
+import {
+  comicGenres,
+  colourCodeGenreLabels,
+  comicGenreIcons,
+} from "./ExploreDefaults";
+import { GiSpiderWeb } from "react-icons/gi";
 
 function Explore() {
   const [selectedGenre, setSelectedGenre] = useState("");
@@ -22,42 +23,6 @@ function Explore() {
       .max(150, "The input is too long.")
       .required("Required."),
   });
-
-  // Some popular genres to search for
-  const comicGenres = [
-    "Action",
-    "Adventure",
-    "Comedy",
-    "Historical",
-    "Magic",
-    "Mystery",
-    "Sci-Fi",
-    "Slice of Life",
-  ];
-
-  // Used to set the background of the respective pills associated with each genre.
-  const colourCodeGenreLabels = [
-    "bg-red-600/20",
-    "bg-orange-500/20",
-    "bg-yellow-500/20",
-    "bg-lime-500/20",
-    "bg-cyan-500/20",
-    "bg-purple-400/20",
-    "bg-green-700/20",
-    "bg-pink-500/20",
-  ];
-
-  // Icons assoicated with each genre.
-  const comicGenreIcons = [
-    <PiLightningFill className="text-red-600 text-lg" />,
-    <PiSwordFill className="text-orange-500 text-lg" />,
-    <FaLaugh className="text-yellow-500 text-lg" />,
-    <FaHourglassHalf className="text-lime-500 text-lg" />,
-    <FaWandMagicSparkles className="text-cyan-500 text-lg" />,
-    <GiMagnifyingGlass className="text-purple-400 text-lg" />,
-    <PiAlienFill className="text-green-700 text-lg" />,
-    <IoSunnySharp className="text-pink-500 text-lg" />,
-  ];
 
   // Controls what happens when one of the genres are selected.
   function handleGenreClick(genre: string) {
