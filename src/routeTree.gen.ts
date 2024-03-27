@@ -11,16 +11,11 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ReadImport } from './routes/read'
 import { Route as ExploreImport } from './routes/explore'
 import { Route as IndexImport } from './routes/index'
+import { Route as ReadComicSlugImport } from './routes/read.$comicSlug'
 
 // Create/Update Routes
-
-const ReadRoute = ReadImport.update({
-  path: '/read',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const ExploreRoute = ExploreImport.update({
   path: '/explore',
@@ -29,6 +24,11 @@ const ExploreRoute = ExploreImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ReadComicSlugRoute = ReadComicSlugImport.update({
+  path: '/read/$comicSlug',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,8 +44,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExploreImport
       parentRoute: typeof rootRoute
     }
-    '/read': {
-      preLoaderRoute: typeof ReadImport
+    '/read/$comicSlug': {
+      preLoaderRoute: typeof ReadComicSlugImport
       parentRoute: typeof rootRoute
     }
   }
@@ -56,7 +56,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
   ExploreRoute,
-  ReadRoute,
+  ReadComicSlugRoute,
 ])
 
 /* prettier-ignore-end */
