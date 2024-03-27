@@ -69,7 +69,7 @@ export interface RelateFrom {
 
 export interface MdTitle {
   title: string;
-  lang: string;
+  lang?: string;
 }
 
 export interface MdComicMdGenre {
@@ -244,4 +244,34 @@ export interface ChapterContent {
   md_comics: MdComics;
   md_images: MdImage[];
   md_chapters_groups: MdChaptersGroup[];
+}
+export interface MuComics {
+  year: number;
+}
+
+export interface SearchComicContent {
+  id: number;
+  hid: string;
+  slug: string;
+  title: string;
+  rating?: string;
+  bayesian_rating?: string;
+  rating_count: number;
+  follow_count: number;
+  desc: string;
+  status: number;
+  last_chapter: number;
+  translation_completed?: boolean;
+  view_count: number;
+  content_rating: string;
+  demographic?: number;
+  uploaded_at: string;
+  genres: number[];
+  created_at: string;
+  user_follow_count: number;
+  year: number;
+  country: string;
+  md_titles: MdTitle[];
+  md_covers: MdCover[];
+  mu_comics?: MuComics;
 }

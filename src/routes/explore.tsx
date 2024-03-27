@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Explore from "../components/explore/Explore";
 
 export const Route = createFileRoute("/explore")({
-  component: () => <div>Hello Explore!</div>,
+  component: Explore,
 });
