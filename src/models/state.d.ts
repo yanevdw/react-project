@@ -203,8 +203,6 @@ export interface ChapterResult {
   limit: number;
 }
 
-type ChaptersResponse = { result: ChapterResult };
-
 export interface MdImage {
   h: number;
   w: number;
