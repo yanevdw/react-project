@@ -1,11 +1,9 @@
 import axios from "axios";
-import {
-  RankDetails,
-  ChaptersResponse,
-  ChapterContent,
-  ComicContent,
-  SearchComicContent,
-} from "../models/state";
+import { RankDetails } from "../models/top-comics";
+import { ComicContent } from "../models/comic";
+import { ComicChapters } from "../models/comic-chapters";
+import { ChapterContent } from "../models/chapter";
+import { SearchComic } from "../models/search-comic";
 
 const baseURL = "https://api.comick.fun/";
 const baseSeachURL = `${baseURL}v1.0/search/`;
@@ -30,7 +28,7 @@ export async function fetchComicContent(
 // Call the API to get a specified comic's chapters based on the comic's hid.
 export async function fetchComicChapters(
   comicHid: string
-): Promise<ChaptersResponse> {
+): Promise<ComicChapters> {
   const response = await axios.get(
     `${baseURL}comic/${comicHid}/chapters?lang=en`
   );
@@ -48,7 +46,7 @@ export async function fetchChapterContent(
 // Call the API to search for comics with a specific genre.
 export async function searchComicByGenre(
   comicGenre: string
-): Promise<SearchComicContent[]> {
+): Promise<SearchComic[]> {
   const response = await axios.get(
     `${baseSeachURL}?genres=${comicGenre}&page=1&limit=15&showall=false&t=false`
   );
@@ -57,7 +55,7 @@ export async function searchComicByGenre(
 
 export async function searchComicByName(
   comicName: string
-): Promise<SearchComicContent[]> {
+): Promise<SearchComic[]> {
   const response = await axios.get(
     `${baseSeachURL}?q=${comicName}&page=1&limit=15&showall=false&t=false`
   );
