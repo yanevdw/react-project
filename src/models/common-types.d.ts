@@ -84,8 +84,8 @@ export interface MdGroups {
 export interface Chapter {
   id: number;
   chap: string;
-  vol: any;
-  title: any;
+  vol?: string;
+  title?: string;
   hid: string;
   group_name: string[];
   chapter_id: string;
