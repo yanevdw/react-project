@@ -35,12 +35,13 @@ function ComicCard({ comicSlug }: { comicSlug: string }) {
         alt="Comic Cover Image"
         className="h-35/100 w-full rounded-md object-cover object-top"
       />
-      <h2 className="text-white font-semibold text-lg mt-2">
+      <h2 className="text-white font-semibold text-lg my-2">
         {comicData?.comic?.title}
       </h2>
 
       <LoadChapters
         comicHid={comicData?.comic?.hid}
+        comicSlug={comicData?.comic.slug}
         chapterCount={comicData?.comic?.last_chapter}
       />
     </div>
