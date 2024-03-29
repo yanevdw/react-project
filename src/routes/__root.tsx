@@ -22,7 +22,7 @@ export const Route = createRootRoute({
           )}
         </div>
         {window.location.pathname.includes("chapter") ? (
-          <div className="content-container h-[90%] overflow-y-scroll scroll-m-0 scroll-p-0">
+          <div className="content-container h-90/100 overflow-y-scroll scroll-m-0 scroll-p-0">
             <Outlet />
           </div>
         ) : (
