@@ -70,7 +70,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
         </div>
         <div className="comic-popup-button-container h-1/10 flex justify-end">
           <Link
-            to={`/read/${comicContentResults.comic.slug}`}
+            to={`/comic/${comicContentResults.comic.slug}`}
             className="bg-blue-munsell p-2 rounded-lg"
           >
             Read Comic
