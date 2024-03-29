@@ -3,7 +3,7 @@ import { fetchComicChapters } from "../../../services/api";
 import { Chapter } from "../../../models/common-types";
 import { Link } from "@tanstack/react-router";
 
-function LoadChapters({
+function ChapterList({
   comicHid,
   comicSlug,
   chapterCount,
@@ -29,22 +29,24 @@ function LoadChapters({
     );
   }
 
-  const comicChapterDetails: Chapter[] = comicChapters.chapters.filter(
-    (chapter: Chapter) => chapter.title !== null
-  );
+  // This will be used in the future
+  // const comicChapterDetails: Chapter[] = comicChapters.chapters.filter(
+  //   (chapter: Chapter) => chapter.title !== null
+  // );
 
   return (
-    <div className="w-full h-3/5 flex flex-col gap-2">
-      {comicChapterDetails.map((chapter: Chapter) => (
+    <div className="w-full h-2/5 flex flex-col gap-2">
+      {comicChapters.chapters.map((chapter: Chapter) => (
         <Link
-          className="w-full h-1/5 px-2 py-4 rounded-lg bg-purple-grey shadow-md hover:-ml-1"
+          className="w-full h-1/5 pl-4 py-4 rounded-lg bg-purple-grey shadow-md hover:-ml-1 text-white"
           key={chapter.hid}
           to={`/comic/${comicSlug}/chapter/${chapter.hid}`}
+          params={(prev) => ({ ...prev, chapterId: `${chapter.hid}` })}
         >
-          Chapter {chapter.chap}: {chapter.title}
+          {chapter.title ? `${chapter.title}` : `Chapter ${chapter.chap}`}
         </Link>
       ))}
     </div>
   );
 }
-export default LoadChapters;
+export default ChapterList;
