@@ -20,7 +20,14 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
   if (isLoading) {
     <div className="w-full h-full">Loading</div>;
   }
-  if (!chapterData) {
+  if (
+    !(
+      chapterData?.chapter ||
+      chapterData?.chapter?.md_images ||
+      chapterData?.prev ||
+      chapterData?.prev?.hid
+    )
+  ) {
     return (
       <p className="p-2 font-sans text-white text-center self-center">
         This chapter does not contain any content.
@@ -29,28 +36,42 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
   }
 
   return (
-    <div className="w-full h-full">
-      {chapterData.chapter.md_images.map((chapterImage: MdImage) => (
+    <div className="w-full h-full relative">
+      {chapterData?.chapter?.md_images?.map((chapterImage: MdImage) => (
         <img
           src={`https://meo3.comick.pictures/${chapterImage.b2key}`}
           key={chapterImage.name}
         />
       ))}
-      <div className="chapter-navigation">
+      <div className="chapter-navigation h-1/10 w-full flex flex-row justify-evenly gap-2 items-center absolute">
+        {chapterData.prev.hid ? (
+          <Link
+            to={`../${chapterData?.prev?.hid}`}
+            className="bg-blue-munsell w-fit h-fit px-2 py-2 z-40 rounded-md text-white font-semibold"
+            onClick={() => (
+              <ComicChapter chapterId={`${chapterData?.prev?.hid}`} />
+            )}
+          >
+            Previous chapter
+          </Link>
+        ) : null}
+        {chapterData.next.hid ? (
+          <Link
+            to={`../${chapterData?.next?.hid}`}
+            className="bg-blue-munsell w-fit h-fit px-2 py-2 rounded-md text-white font-semibold"
+            onClick={() => (
+              <ComicChapter chapterId={`${chapterData?.next?.hid}`} />
+            )}
+          >
+            Next chapter
+          </Link>
+        ) : null}
         <Link
-          to={`${chapterData.prev.hid}`}
-          params={(prev) => ({ ...prev, chapterId: `${chapterData.prev.hid}` })}
-          className="bg-blue-munsell w-fit h-fit px-2 py-2 z-40"
-          onClick={() => <ComicChapter chapterId={`${chapterData.prev.hid}`} />}
+          to={"../../"}
+          className="bg-blue-munsell w-fit h-fit px-2 py-2 z-40 rounded-md text-white font-semibold"
         >
-          Previous Chapter
+          View all chapters
         </Link>
-        {/* <Link
-          to={() => T}
-          className="bg-blue-munsell w-fit h-fit px-2 py-2 z-40"
-        >
-          View all Chapters
-        </Link> */}
       </div>
     </div>
   );

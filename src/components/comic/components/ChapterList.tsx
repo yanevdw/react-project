@@ -21,7 +21,7 @@ function ChapterList({
     console.error("An unexpected error occurred: " + error);
   }
 
-  if (!(comicChapters?.chapters || comicChapters?.total)) {
+  if (!comicChapters?.chapters) {
     return (
       <p className="p-2 font-sans text-white text-center self-center">
         No comic content to display.
@@ -41,7 +41,6 @@ function ChapterList({
           className="w-full h-1/5 pl-4 py-4 rounded-lg bg-purple-grey shadow-md hover:-ml-1 text-white"
           key={chapter.hid}
           to={`/comic/${comicSlug}/chapter/${chapter.hid}`}
-          params={(prev) => ({ ...prev, chapterId: `${chapter.hid}` })}
         >
           {chapter.title ? `${chapter.title}` : `Chapter ${chapter.chap}`}
         </Link>
