@@ -14,7 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as ExploreImport } from './routes/explore'
 import { Route as IndexImport } from './routes/index'
 import { Route as ComicComicSlugImport } from './routes/comic.$comicSlug'
-import { Route as ComicComicSlugChapterChapterHidImport } from './routes/comic.$comicSlug.chapter.$chapterHid'
+import { Route as ComicComicSlugChapterChapterIdImport } from './routes/comic_.$comicSlug.chapter.$chapterId'
 
 // Create/Update Routes
 
@@ -33,10 +33,10 @@ const ComicComicSlugRoute = ComicComicSlugImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ComicComicSlugChapterChapterHidRoute =
-  ComicComicSlugChapterChapterHidImport.update({
-    path: '/chapter/$chapterHid',
-    getParentRoute: () => ComicComicSlugRoute,
+const ComicComicSlugChapterChapterIdRoute =
+  ComicComicSlugChapterChapterIdImport.update({
+    path: '/comic/$comicSlug/chapter/$chapterId',
+    getParentRoute: () => rootRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -55,9 +55,9 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComicComicSlugImport
       parentRoute: typeof rootRoute
     }
-    '/comic/$comicSlug/chapter/$chapterHid': {
-      preLoaderRoute: typeof ComicComicSlugChapterChapterHidImport
-      parentRoute: typeof ComicComicSlugImport
+    '/comic/$comicSlug/chapter/$chapterId': {
+      preLoaderRoute: typeof ComicComicSlugChapterChapterIdImport
+      parentRoute: typeof rootRoute
     }
   }
 }
@@ -67,7 +67,8 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
   ExploreRoute,
-  ComicComicSlugRoute.addChildren([ComicComicSlugChapterChapterHidRoute]),
+  ComicComicSlugRoute,
+  ComicComicSlugChapterChapterIdRoute,
 ])
 
 /* prettier-ignore-end */
