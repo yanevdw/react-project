@@ -14,7 +14,7 @@ export default {
         "blue-munsell": "rgb(27, 154, 170)",
         "purple-power": "rgb(129, 110, 148)",
         frost: "rgba(255, 255, 255, 0.35)",
-        "purple-grey": "rgb(48, 44,57)",
+        "purple-grey": "rgb(34, 30, 43)",
       },
       height: {
         "1/10": "10%",
