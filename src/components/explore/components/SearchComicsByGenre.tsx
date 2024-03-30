@@ -4,13 +4,15 @@ import { GiSpiderWeb } from "react-icons/gi";
 import SearchResults from "./SearchResults";
 
 function SearchComicsByGenre({ genre }: { genre: string }) {
+  const formattedGenre = genre.replace(/\s+/g, "-").toLowerCase();
+
   const {
     data: searchComicByGenreResults,
     error,
     isLoading,
   } = useQuery({
-    queryKey: [`searchComicByGenre`, genre],
-    queryFn: () => searchComicByGenre(genre),
+    queryKey: [`searchComicByGenre`, formattedGenre],
+    queryFn: () => searchComicByGenre(formattedGenre),
   });
 
   if (error) {

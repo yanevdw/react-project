@@ -4,13 +4,15 @@ import { GiSpiderWeb } from "react-icons/gi";
 import SearchResults from "./SearchResults";
 
 function SearchComicsByName({ comicName }: { comicName: string }) {
+  const formattedComicName = comicName.replace(/\s+/g, "-").toLowerCase();
+
   const {
     data: searchComicByNameResults,
     error,
     isLoading,
   } = useQuery({
-    queryKey: [`searchComicByName`, comicName],
-    queryFn: () => searchComicByName(comicName),
+    queryKey: [`searchComicByName`, formattedComicName],
+    queryFn: () => searchComicByName(formattedComicName),
   });
 
   if (error) {
