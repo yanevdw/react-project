@@ -44,9 +44,9 @@ function Explore() {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="w-full flex flex-row flex-wrap justify-between mb-8">
+          <Form className="w-full flex flex-row flex-wrap justify-between mb-8 md:justify-end md:gap-4">
             <Field
-              className="w-4/5 pl-4 py-2 rounded-2xl h-8 outline-none border-none bg-purple-grey"
+              className="w-4/5 pl-4 py-2 rounded-2xl h-8 outline-none border-none bg-purple-grey md:w-3/10"
               name="searchString"
               placeholder="Search for comics"
             />
@@ -73,7 +73,7 @@ function Explore() {
         {comicGenres.map((comicGenre, index) => (
           <label
             key={comicGenre.toLowerCase()}
-            className={`text-white text-sm rounded-2xl flex flex-row items-center gap-2 ${colourCodeGenreLabels[index]} px-3 py-2`}
+            className={`text-white text-sm rounded-2xl flex flex-row items-center gap-2 ${colourCodeGenreLabels[index]} px-3 py-2 hover:cursor-pointer`}
             onClick={() => handleGenreClick(comicGenre)}
           >
             {comicGenreIcons[index]}
