@@ -51,7 +51,7 @@ function Explore() {
               placeholder="Search for comics"
             />
             <button
-              className="bg-blue-munsell text-white px-4 rounded-lg"
+              className="bg-blue-munsell text-white px-4 rounded-lg font-semibold"
               type="submit"
             >
               Go
