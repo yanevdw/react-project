@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchComicContent } from "../services/api";
 import { IoPerson } from "react-icons/io5";
+import { Link } from "@tanstack/react-router";
 
 function ComicPopup({ comicSlug }: { comicSlug: string }) {
   const { data: comicContentResults, error } = useQuery({
@@ -68,7 +69,12 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
           </p>
         </div>
         <div className="comic-popup-button-container h-1/10 flex justify-end">
-          <button className="bg-blue-munsell p-2 rounded-lg">Read Comic</button>
+          <Link
+            to={`/comic/${comicContentResults.comic.slug}`}
+            className="bg-blue-munsell p-2 rounded-lg"
+          >
+            Read Comic
+          </Link>
         </div>
       </div>
     </div>

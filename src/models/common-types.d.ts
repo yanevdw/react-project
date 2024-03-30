@@ -12,7 +12,7 @@ export interface FirstChap {
   hid: string;
   lang: string;
   group_name: string[];
-  vol: string | null;
+  vol?: string;
 }
 
 export interface Link {
@@ -57,7 +57,7 @@ export interface MdTitle {
 
 export interface MdGenre {
   name: string;
-  type: string | null;
+  type?: string;
   slug: string;
   group: string;
 }

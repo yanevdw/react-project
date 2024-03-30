@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-function WebNavigation() {
+function DesktopNavigation() {
   return (
     <div className="navbar-container flex justify-end gap-8">
       <Link
@@ -19,4 +19,4 @@ function WebNavigation() {
   );
 }
 
-export default WebNavigation;
+export default DesktopNavigation;

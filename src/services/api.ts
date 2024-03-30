@@ -27,10 +27,11 @@ export async function fetchComicContent(
 
 // Call the API to get a specified comic's chapters based on the comic's hid.
 export async function fetchComicChapters(
-  comicHid: string
+  comicHid: string,
+  chapterCount: number
 ): Promise<ComicChapters> {
   const response = await axios.get(
-    `${baseURL}comic/${comicHid}/chapters?lang=en`
+    `${baseURL}comic/${comicHid}/chapters?lang=en&limit=${chapterCount * 6}`
   );
   return response.data;
 }

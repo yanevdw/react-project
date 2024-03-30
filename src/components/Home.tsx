@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { RankDetails } from "../models/state";
+import { RankDetails } from "../models/top-comics";
 import { fetchTopComics } from "../services/api";
 import ComicPopup from "./ComicPopup";
 

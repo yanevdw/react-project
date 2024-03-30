@@ -65,14 +65,11 @@ export interface Comic {
   follow_count: number;
   desc: string;
   slug: string;
-  mismatch: null;
   year: number;
   bayesian_rating: string;
   rating_count: number;
   translation_completed: boolean;
   chapter_numbers_reset_on_new_volume_manual: boolean;
-  final_chapter: null;
-  final_volume: null;
   noindex: boolean;
   adsense: boolean;
   recommendations: Recommendation[];
@@ -104,7 +101,6 @@ export interface ComicContent {
   langList: string[];
   recommendable: boolean;
   demographic: string;
-  englishLink?: null;
   matureContent: boolean;
   checkVol2Chap1: boolean;
 }
