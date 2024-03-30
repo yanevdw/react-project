@@ -1,23 +1,7 @@
+import { RankDetails } from "../../../models/top-comics";
 import { useQuery } from "@tanstack/react-query";
-import { RankDetails } from "../models/top-comics";
-import { fetchTopComics } from "../services/api";
-import ComicPopup from "./ComicPopup";
-
-function Home() {
-  return (
-    <>
-      <h2 className="text-white font-semibold text-xl">Top 10 Manga</h2>
-      <TopComicComponent comicType="Manga" />
-      <h2 className="text-white font-semibold text-xl">Top 10 Manhwa</h2>
-      <TopComicComponent comicType="Manhwa" />
-      <h2 className="text-white font-semibold text-xl">Top 10 Manhua</h2>
-      <TopComicComponent comicType="Manhua" />
-    </>
-  );
-}
-
-export default Home;
-
+import { fetchTopComics } from "../../../services/api";
+import ComicPopup from "../../ComicPopup";
 function TopComicComponent({ comicType }: { comicType: string }) {
   const { data: topComicResults, error } = useQuery({
     queryKey: [`fetchTop${comicType}`],
@@ -97,3 +81,5 @@ function TopComicComponent({ comicType }: { comicType: string }) {
     </>
   );
 }
+
+export default TopComicComponent;
