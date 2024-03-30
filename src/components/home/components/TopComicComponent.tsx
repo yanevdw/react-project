@@ -62,8 +62,6 @@ function TopComicComponent({ comicType }: { comicType: string }) {
     .filter((comic: RankDetails) => comic.md_covers?.[0]?.b2key)
     .slice(0, 10);
 
-  console.log(topTenComics);
-
   return (
     <>
       <div
