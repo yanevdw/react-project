@@ -55,7 +55,7 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
             Previous chapter
           </Link>
         ) : null}
-        {chapterData.next.hid ? (
+        {chapterData?.next?.hid ? (
           <Link
             to={`../${chapterData?.next?.hid}`}
             className="bg-blue-munsell w-fit h-fit px-2 py-2 rounded-md text-white font-semibold"
