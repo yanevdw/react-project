@@ -4,13 +4,38 @@ import { IoPerson } from "react-icons/io5";
 import { Link } from "@tanstack/react-router";
 
 function ComicPopup({ comicSlug }: { comicSlug: string }) {
-  const { data: comicContentResults, error } = useQuery({
+  const {
+    data: comicContentResults,
+    error,
+    isLoading,
+    isPending,
+  } = useQuery({
     queryKey: ["fetchComicContent", comicSlug],
     queryFn: () => fetchComicContent(comicSlug),
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
+  }
+
+  if (isLoading || isPending) {
+    return (
+      <div className="popup-container w-full h-full px-3">
+        <div className="loader-container w-full flex flex-row justify-center py-4">
+          <span className="loading loading-spinner text-primary"></span>
+          <span className="loading loading-spinner text-secondary"></span>
+          <span className="loading loading-spinner text-accent"></span>
+          <span className="loading loading-spinner text-neutral"></span>
+          <span className="loading loading-spinner text-info"></span>
+          <span className="loading loading-spinner text-success"></span>
+          <span className="loading loading-spinner text-warning"></span>
+          <span className="loading loading-spinner text-error"></span>
+        </div>
+        <h2 className="font-semibold text-white text-xl text-center">
+          Building the web
+        </h2>
+      </div>
+    );
   }
 
   if (
@@ -19,7 +44,8 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
       comicContentResults?.comic?.title ||
       comicContentResults?.comic?.desc ||
       comicContentResults?.comic?.follow_count ||
-      comicContentResults?.comic?.md_comic_md_genres
+      comicContentResults?.comic?.md_comic_md_genres ||
+      comicContentResults?.comic?.hid
     )
   ) {
     return (
