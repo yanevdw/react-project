@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchComicContent } from "../services/api";
 import { IoPerson } from "react-icons/io5";
 import { Link } from "@tanstack/react-router";
+import ContentLoader from "./ContentLoader";
 
 function ComicPopup({ comicSlug }: { comicSlug: string }) {
   const {
@@ -21,19 +22,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
   if (isLoading || isPending) {
     return (
       <div className="popup-container w-full h-full px-3 flex flex-col justify-center items-center">
-        <div className="loader-container w-full flex flex-row justify-center py-4">
-          <span className="loading loading-spinner text-primary"></span>
-          <span className="loading loading-spinner text-secondary"></span>
-          <span className="loading loading-spinner text-accent"></span>
-          <span className="loading loading-spinner text-neutral"></span>
-          <span className="loading loading-spinner text-info"></span>
-          <span className="loading loading-spinner text-success"></span>
-          <span className="loading loading-spinner text-warning"></span>
-          <span className="loading loading-spinner text-error"></span>
-        </div>
-        <h2 className="font-semibold text-white text-xl text-center">
-          Building the web
-        </h2>
+        <ContentLoader />
       </div>
     );
   }

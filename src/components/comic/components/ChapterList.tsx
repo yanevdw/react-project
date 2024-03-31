@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchComicChapters } from "../../../services/api";
 import { Chapter } from "../../../models/common-types";
 import { Link } from "@tanstack/react-router";
+import ContentLoader from "../../ContentLoader";
 
 function ChapterList({
   comicHid,
@@ -25,19 +26,7 @@ function ChapterList({
   if (isLoading || isPending) {
     return (
       <div className="w-full h-2/5 flex flex-col justify-center items-center">
-        <div className="loader-container w-full flex flex-row justify-center py-4">
-          <span className="loading loading-spinner text-primary"></span>
-          <span className="loading loading-spinner text-secondary"></span>
-          <span className="loading loading-spinner text-accent"></span>
-          <span className="loading loading-spinner text-neutral"></span>
-          <span className="loading loading-spinner text-info"></span>
-          <span className="loading loading-spinner text-success"></span>
-          <span className="loading loading-spinner text-warning"></span>
-          <span className="loading loading-spinner text-error"></span>
-        </div>
-        <h2 className="font-semibold text-white text-xl text-center">
-          Building the web
-        </h2>
+        <ContentLoader />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { searchComicByGenre } from "../../../services/api";
 import SearchResults from "./SearchResults";
+import ContentLoader from "../../ContentLoader";
 
 function SearchComicsByGenre({ genre }: { genre: string }) {
   const formattedGenre = genre.replace(/\s+/g, "-").toLowerCase();
@@ -24,19 +25,7 @@ function SearchComicsByGenre({ genre }: { genre: string }) {
       <div
         className={`${genre}-container w-full h-3/10 flex flex-col items-center justify-center`}
       >
-        <div className="loader-container w-full flex flex-row justify-center py-4">
-          <span className="loading loading-spinner text-primary"></span>
-          <span className="loading loading-spinner text-secondary"></span>
-          <span className="loading loading-spinner text-accent"></span>
-          <span className="loading loading-spinner text-neutral"></span>
-          <span className="loading loading-spinner text-info"></span>
-          <span className="loading loading-spinner text-success"></span>
-          <span className="loading loading-spinner text-warning"></span>
-          <span className="loading loading-spinner text-error"></span>
-        </div>
-        <h2 className="font-semibold text-white text-xl text-center">
-          Building the web
-        </h2>
+        <ContentLoader />
       </div>
     );
   }
