@@ -2,6 +2,7 @@ import { RankDetails } from "../../../models/top-comics";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTopComics } from "../../../services/api";
 import ComicPopup from "../../ComicPopup";
+import ContentLoader from "../../ContentLoader";
 function TopComicComponent({ comicType }: { comicType: string }) {
   const {
     data: topComicResults,
@@ -22,19 +23,7 @@ function TopComicComponent({ comicType }: { comicType: string }) {
       <div
         className={`top-${comicType.toLowerCase()}-container w-full h-3/10 flex flex-col items-center justify-center`}
       >
-        <div className="loader-container w-full flex flex-row justify-center py-4">
-          <span className="loading loading-spinner text-primary"></span>
-          <span className="loading loading-spinner text-secondary"></span>
-          <span className="loading loading-spinner text-accent"></span>
-          <span className="loading loading-spinner text-neutral"></span>
-          <span className="loading loading-spinner text-info"></span>
-          <span className="loading loading-spinner text-success"></span>
-          <span className="loading loading-spinner text-warning"></span>
-          <span className="loading loading-spinner text-error"></span>
-        </div>
-        <h2 className="font-semibold text-white text-xl text-center">
-          Building the web
-        </h2>
+        <ContentLoader />
       </div>
     );
   }
