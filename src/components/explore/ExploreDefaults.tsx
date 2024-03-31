@@ -30,12 +30,15 @@ export const colourCodeGenreLabels = [
 
 // Icons assoicated with each genre.
 export const comicGenreIcons = [
-  <PiLightningFill className="text-red-600 text-lg" />,
-  <PiSwordFill className="text-orange-500 text-lg" />,
-  <FaLaugh className="text-yellow-500 text-lg" />,
-  <FaHourglassHalf className="text-lime-500 text-lg" />,
-  <FaWandMagicSparkles className="text-cyan-500 text-lg" />,
-  <GiMagnifyingGlass className="text-purple-400 text-lg" />,
-  <PiAlienFill className="text-green-700 text-lg" />,
-  <IoSunnySharp className="text-pink-500 text-lg" />,
+  <PiLightningFill key="lightning" className="text-red-600 text-lg" />,
+  <PiSwordFill key="sword" className="text-orange-500 text-lg" />,
+  <FaLaugh key="laugh" className="text-yellow-500 text-lg" />,
+  <FaHourglassHalf key="hourglass" className="text-lime-500 text-lg" />,
+  <FaWandMagicSparkles key="sparkles" className="text-cyan-500 text-lg" />,
+  <GiMagnifyingGlass
+    key="magnifying-glass"
+    className="text-purple-400 text-lg"
+  />,
+  <PiAlienFill key="alien" className="text-green-700 text-lg" />,
+  <IoSunnySharp key="sun" className="text-pink-500 text-lg" />,
 ];
