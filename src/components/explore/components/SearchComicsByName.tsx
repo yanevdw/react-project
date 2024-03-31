@@ -16,7 +16,7 @@ function SearchComicsByName({ comicName }: { comicName: string }) {
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
   if (isLoading || isPending) {

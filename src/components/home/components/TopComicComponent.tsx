@@ -14,7 +14,7 @@ function TopComicComponent({ comicType }: { comicType: string }) {
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
   if (isLoading || isPending) {
@@ -41,9 +41,9 @@ function TopComicComponent({ comicType }: { comicType: string }) {
 
   if (
     !(
-      topComicResults?.[0]?.md_covers?.[0]?.b2key ||
-      topComicResults?.[0]?.slug ||
-      topComicResults?.[0]?.title
+      topComicResults?.rank?.[0]?.md_covers?.[0]?.b2key ||
+      topComicResults?.rank?.[0]?.slug ||
+      topComicResults?.rank?.[0]?.title
     )
   ) {
     return (
@@ -58,7 +58,7 @@ function TopComicComponent({ comicType }: { comicType: string }) {
   }
 
   // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
-  const topTenComics: RankDetails[] = topComicResults
+  const topTenComics: RankDetails[] = topComicResults.rank
     .filter((comic: RankDetails) => comic.md_covers?.[0]?.b2key)
     .slice(0, 10);
 

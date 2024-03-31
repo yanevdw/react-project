@@ -16,7 +16,7 @@ function SearchComicsByGenre({ genre }: { genre: string }) {
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
   if (isLoading || isPending) {
