@@ -18,13 +18,13 @@ function ChapterList({
     isLoading,
     isPending,
   } = useQuery({
-    queryKey: ["fetchComicChapters"],
+    queryKey: ["fetchComicChapters", comicHid],
     queryFn: () => fetchComicChapters(comicHid, chapterCount),
   });
 
   if (isLoading || isPending) {
     return (
-      <div className="w-full h-2/5">
+      <div className="w-full h-2/5 flex flex-col justify-center items-center">
         <div className="loader-container w-full flex flex-row justify-center py-4">
           <span className="loading loading-spinner text-primary"></span>
           <span className="loading loading-spinner text-secondary"></span>

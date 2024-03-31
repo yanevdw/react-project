@@ -20,7 +20,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
 
   if (isLoading || isPending) {
     return (
-      <div className="popup-container w-full h-full px-3">
+      <div className="popup-container w-full h-full px-3 flex flex-col justify-center items-center">
         <div className="loader-container w-full flex flex-row justify-center py-4">
           <span className="loading loading-spinner text-primary"></span>
           <span className="loading loading-spinner text-secondary"></span>
