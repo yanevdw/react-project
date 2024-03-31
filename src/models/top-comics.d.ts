@@ -9,3 +9,7 @@ export interface RankDetails {
   last_chapter: number;
   md_covers: MdCover[];
 }
+
+export interface Rank {
+  rank: RankDetails[];
+}
