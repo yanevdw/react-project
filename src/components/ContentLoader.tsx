@@ -1,6 +1,6 @@
 function ContentLoader() {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="loader-container w-full flex flex-row justify-center items-center">
         <span className="loading loading-spinner text-primary"></span>
         <span className="loading loading-spinner text-secondary"></span>
