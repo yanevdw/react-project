@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.comic-popup-content {
+  transform-style: preserve-3d;
+}
+
+.comic-popup-front,
+.comic-popup-back {
+  backface-visibility: hidden;
+}
+
+.comic-popup-back {
+  transform: rotateY(180deg);
+}
+
+
+<dialog
+id={`${comicType.toLowerCase()}-comic-popup-${comicRec?.slug}`}
+className="comic-popup border-none outline-none h-13/20 rounded-lg bg-transparent xs:w-full sm:w-3/5 py-3 md:w-1/2 lg:w-2/5 xl:w-3/10"
+>
+<ComicPopup comicSlug={comicRec?.slug} />
+</dialog>
