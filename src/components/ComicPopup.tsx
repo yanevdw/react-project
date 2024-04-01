@@ -53,7 +53,8 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
             {comicContentResults.comic.title}
           </h2>
           {/* Sometimes the follow count is not null but 0, so I am accommodating this by hiding the follow count in the event that this happens */}
-          {comicContentResults.comic.follow_count !== 0 ? (
+          {comicContentResults.comic.follow_count !== 0 ||
+          comicContentResults.comic.title.length < 15 ? (
             <label className="bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2">
               <IoPerson className="mt-1" />
               {comicContentResults.comic.follow_count}
