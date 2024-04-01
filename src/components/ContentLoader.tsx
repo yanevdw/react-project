@@ -11,7 +11,7 @@ function ContentLoader() {
         <span className="loading loading-spinner text-warning"></span>
         <span className="loading loading-spinner text-error"></span>
       </div>
-      <h2 className="font-semibold text-white text-xl text-center">
+      <h2 className="font-semibold text-white text-xl text-center pt-4">
         Building the web
       </h2>
     </div>
