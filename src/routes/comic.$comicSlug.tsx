@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ComicContent from "../components/comic/ComicContent";
-import PageNotFoundComponent from "../components/PageNotFoundComponent";
+import PageNotFound from "../components/PageNotFound";
 
 export const Route = createFileRoute("/comic/$comicSlug")({
   component: Comic,
-  notFoundComponent: PageNotFoundComponent,
+  notFoundComponent: PageNotFound,
 });
 
 function Comic() {
