@@ -15,12 +15,12 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
     queryFn: () => fetchChapterContent(chapterId),
   });
 
-  if (error) {
-    console.error(`An unexpected error occurred: ${error.message}`);
-  }
-
   if (isLoading || isPending) {
     <ContentLoader />;
+  }
+
+  if (error) {
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
   if (

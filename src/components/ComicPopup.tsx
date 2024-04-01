@@ -75,14 +75,14 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
           <div className="comic-popup-back absolute w-full h-full bg-frost backdrop-blur rounded-lg p-3">
             <div className="comic-info-container w-full h-full flex flex-col bg-plum-500 p-4 rounded-lg">
               <div className="comic-quick-facts-container mb-4 w-full h-1/10 flex justify-between items-center gap-4">
-                <div className="comic-popup-header flex flex-row justify-start gap-4">
+                <div className="comic-popup-header flex flex-row justify-start items-center gap-4">
                   <h2 className="font-sans font-semibold text-lg">
                     {comicContentResults.comic.title}
                   </h2>
                   {/* Sometimes the follow count is not null but 0, so I am accommodating this by hiding the follow count in the event that this happens */}
                   {comicContentResults.comic.follow_count !== 0 ||
-                  comicContentResults.comic.title.length < 15 ? (
-                    <label className="bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2 text-center">
+                  comicContentResults.comic.title.length < 10 ? (
+                    <label className="h-fit bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2 text-center">
                       <IoPerson className="mt-1" />
                       {comicContentResults.comic.follow_count}
                     </label>
@@ -112,7 +112,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                   </label>
                 ))}
               </div>
-              <div className="comic-description-container w-full h-3/10">
+              <div className="comic-description-container w-full mb-1 h-1/4 md:h-3/10">
                 <h3 className="text-white font-sans font-semibold font-md mt-2">
                   Description
                 </h3>
