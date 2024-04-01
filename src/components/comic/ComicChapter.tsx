@@ -44,37 +44,33 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
         <img
           src={`https://meo3.comick.pictures/${chapterImage.b2key}`}
           key={chapterImage.name}
+          className="w-full object-cover"
+          alt="Chapter Page Image"
         />
       ))}
       <div className="chapter-navigation h-1/10 w-full flex flex-row justify-evenly gap-2 items-center absolute">
         {chapterData.prev.hid ? (
           <Link
             to={`../${chapterData?.prev?.hid}`}
-            className="bg-blue-munsell w-fit h-fit px-2 py-2 z-40 rounded-md text-white font-semibold"
-            onClick={() => (
-              <ComicChapter chapterId={`${chapterData?.prev?.hid}`} />
-            )}
+            className="bg-blue-munsell/75 w-fit h-fit px-4 py-2 z-40 rounded-md text-white font-semibold text-nowrap"
           >
-            Previous chapter
-          </Link>
-        ) : null}
-        {chapterData?.next?.hid ? (
-          <Link
-            to={`../${chapterData?.next?.hid}`}
-            className="bg-blue-munsell w-fit h-fit px-2 py-2 rounded-md text-white font-semibold"
-            onClick={() => (
-              <ComicChapter chapterId={`${chapterData?.next?.hid}`} />
-            )}
-          >
-            Next chapter
+            ←
           </Link>
         ) : null}
         <Link
           to={"../../"}
-          className="bg-blue-munsell w-fit h-fit px-2 py-2 z-40 rounded-md text-white font-semibold"
+          className="bg-blue-munsell/75 w-fit h-fit px-2 py-2 z-40 rounded-md text-white font-semibold text-nowrap"
         >
           View all chapters
         </Link>
+        {chapterData?.next?.hid ? (
+          <Link
+            to={`../${chapterData?.next?.hid}`}
+            className="bg-blue-munsell/75 w-fit h-fit px-4 py-2 rounded-md text-white font-semibold text-nowrap"
+          >
+            →
+          </Link>
+        ) : null}
       </div>
     </div>
   );
