@@ -5,6 +5,7 @@ import { Link } from "@tanstack/react-router";
 import ContentLoader from "./ContentLoader";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { GiClick } from "react-icons/gi";
 
 function ComicPopup({ comicSlug }: { comicSlug: string }) {
   const [cardFlipped, setCardFlipped] = useState(false);
@@ -64,11 +65,15 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
           animate={{ rotateY: cardFlipped ? 180 : 360 }}
           transition={{ duration: 0.6, animationDirection: "normal" }}
         >
-          <div className="comic-popup-front absolute w-full h-full bg-frost backdrop-blur rounded-lg p-3">
+          <div className="comic-popup-front absolute flex flex-row justify-end w-full h-full bg-frost backdrop-blur rounded-lg p-3">
             <img
               src={`https://meo3.comick.pictures/${comicContentResults.comic.md_covers[0].b2key}`}
               alt="Manga Cover Image"
               className="h-full w-full object-cover object-top rounded-md"
+            />
+            <GiClick
+              className="absolute m-2 p-2 bg-frost flex items-end rounded-3xl text-white md:hidden"
+              size={40}
             />
           </div>
 
@@ -112,18 +117,18 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                   </label>
                 ))}
               </div>
-              <div className="comic-description-container w-full mb-1 h-1/4 md:h-3/10">
+              <div className="comic-description-container w-full mb-8 md:mb-2 h-1/5 md:h-3/10">
                 <h3 className="text-white font-sans font-semibold font-md mt-2">
                   Description
                 </h3>
-                <p className="text-white overflow-y-scroll overflow-x-hidden h-3/5">
+                <p className="comic-description text-white overflow-y-scroll overflow-x-hidden h-3/5">
                   {comicContentResults.comic.desc}
                 </p>
               </div>
               <div className="comic-popup-button-container h-1/10 flex justify-end">
                 <Link
                   to={`/comic/${comicContentResults.comic.slug}`}
-                  className="bg-blue-munsell p-2 rounded-lg text-white font-semibold"
+                  className="bg-blue-munsell rounded-lg px-2 text-white flex items-center font-semibold"
                 >
                   Read Comic
                 </Link>
