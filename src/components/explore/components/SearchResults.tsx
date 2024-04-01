@@ -44,13 +44,8 @@ function SearchResults({ results }: { results: SearchComic[] }) {
           >
             <dialog
               id={`search-comic-popup-${searchResult?.slug}`}
-              className="comic-popup border-none outline-none h-3/5 rounded-lg bg-frost backdrop-blur xs:w-full sm:w-3/5 py-3 md:w-1/2 lg:w-2/5 xl:w-3/10"
+              className="comic-popup border-none outline-none h-13/20 rounded-lg bg-transparent xs:w-full sm:w-3/5 py-3 md:w-1/2 lg:w-2/5 xl:w-3/10"
             >
-              <form method="dialog">
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-7 top-7  p-0 m-0 flex items-center justify-center outline-none">
-                  ✕
-                </button>
-              </form>
               <ComicPopup comicSlug={searchResult?.slug} />
             </dialog>
 

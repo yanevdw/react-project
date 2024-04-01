@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.comic-popup-content {
+  transform-style: preserve-3d;
+}
+
+.comic-popup-front,
+.comic-popup-back {
+  backface-visibility: hidden;
+}
+
+.comic-popup-back {
+  transform: rotateY(180deg);
+}
