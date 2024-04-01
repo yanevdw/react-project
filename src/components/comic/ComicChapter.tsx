@@ -2,24 +2,27 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchChapterContent } from "../../services/api";
 import { MdImage } from "../../models/common-types";
 import { Link } from "@tanstack/react-router";
+import ContentLoader from "../ContentLoader";
 
 function ComicChapter({ chapterId }: { chapterId: string }) {
   const {
     data: chapterData,
     error,
     isLoading,
+    isPending,
   } = useQuery({
     queryKey: ["fetchChapter", chapterId],
     queryFn: () => fetchChapterContent(chapterId),
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
-  if (isLoading) {
-    <div className="w-full h-full">Loading</div>;
+  if (isLoading || isPending) {
+    <ContentLoader />;
   }
+
   if (
     !(
       chapterData?.chapter ||
@@ -55,7 +58,7 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
             Previous chapter
           </Link>
         ) : null}
-        {chapterData.next.hid ? (
+        {chapterData?.next?.hid ? (
           <Link
             to={`../${chapterData?.next?.hid}`}
             className="bg-blue-munsell w-fit h-fit px-2 py-2 rounded-md text-white font-semibold"

@@ -1,3 +1,12 @@
+import {
+  MdCover,
+  MdGenre,
+  Relates,
+  Link,
+  MdTitle,
+  FirstChap,
+} from "./common-types";
+
 export interface Recommendation {
   up: number;
   down: number;

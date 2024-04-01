@@ -1,29 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import { searchComicByName } from "../../../services/api";
-import { GiSpiderWeb } from "react-icons/gi";
 import SearchResults from "./SearchResults";
+import ContentLoader from "../../ContentLoader";
 
 function SearchComicsByName({ comicName }: { comicName: string }) {
+  const formattedComicName = comicName.replace(/\s+/g, "-").toLowerCase();
+
   const {
     data: searchComicByNameResults,
     error,
     isLoading,
+    isPending,
   } = useQuery({
-    queryKey: [`searchComicByName`, comicName],
-    queryFn: () => searchComicByName(comicName),
+    queryKey: [`searchComicByName`, formattedComicName],
+    queryFn: () => searchComicByName(formattedComicName),
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
-  if (isLoading) {
+  if (isLoading || isPending) {
     return (
-      <div className="search-comic-container w-full h-3/10 flex flex-col items-center">
-        <GiSpiderWeb size={70} className="text-white" />
-        <h2 className="font-semibold text-white text-xl text-center">
-          Building the web
-        </h2>
+      <div className="search-comic-container w-full h-3/10 flex flex-col items-center justify-center">
+        <ContentLoader />
       </div>
     );
   }

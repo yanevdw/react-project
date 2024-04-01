@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchComicChapters } from "../../../services/api";
 import { Chapter } from "../../../models/common-types";
 import { Link } from "@tanstack/react-router";
+import ContentLoader from "../../ContentLoader";
 
 function ChapterList({
   comicHid,
@@ -12,13 +13,26 @@ function ChapterList({
   comicSlug: string;
   chapterCount: number;
 }) {
-  const { data: comicChapters, error } = useQuery({
-    queryKey: ["fetchComicChapters"],
+  const {
+    data: comicChapters,
+    error,
+    isLoading,
+    isPending,
+  } = useQuery({
+    queryKey: ["fetchComicChapters", comicHid],
     queryFn: () => fetchComicChapters(comicHid, chapterCount),
   });
 
+  if (isLoading || isPending) {
+    return (
+      <div className="w-full h-2/5 flex flex-col justify-center items-center">
+        <ContentLoader />
+      </div>
+    );
+  }
+
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
   }
 
   if (!comicChapters?.chapters) {
@@ -28,11 +42,6 @@ function ChapterList({
       </p>
     );
   }
-
-  // This will be used in the future
-  // const comicChapterDetails: Chapter[] = comicChapters.chapters.filter(
-  //   (chapter: Chapter) => chapter.title !== null
-  // );
 
   return (
     <div className="w-full h-2/5 flex flex-col gap-2">

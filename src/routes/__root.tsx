@@ -16,7 +16,7 @@ export const Route = createRootRoute({
               <DesktopNavigation />
             </div>
           ) : (
-            <div className="web-nav-container text-white w-3/10 hidden md:block lg:block xl:block 2xl:block">
+            <div className="web-nav-container text-white w-3/10 hidden md:block">
               <DesktopNavigation />
             </div>
           )}
@@ -26,7 +26,7 @@ export const Route = createRootRoute({
             <Outlet />
           </div>
         ) : (
-          <div className="content-container px-6 h-4/5 overflow-y-scroll scroll-m-0 scroll-p-0">
+          <div className="content-container px-6 h-4/5 overflow-y-scroll scroll-m-0 scroll-p-0 md:h-90/100">
             <Outlet />
           </div>
         )}
@@ -38,8 +38,8 @@ export const Route = createRootRoute({
             </div>
           </div>
         ) : (
-          <div className="footer-container w-full h-1/10">
-            <div className="mobile-nav-container w-full h-full block md:hidden lg:hidden xl:hidden 2xl:hidden">
+          <div className="footer-container w-full h-1/10 block md:hidden">
+            <div className="mobile-nav-container w-full h-full">
               <MobileNavigation />
             </div>
           </div>

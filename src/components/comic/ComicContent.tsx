@@ -1,15 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchComicContent } from "../../services/api";
 import ChapterList from "./components/ChapterList";
+import ContentLoader from "../ContentLoader";
 
 function ComicContent({ comic }: { comic: string }) {
-  const { data: comicData, error } = useQuery({
+  const {
+    data: comicData,
+    error,
+    isLoading,
+    isPending,
+  } = useQuery({
     queryKey: ["fetchComicContent", comic],
     queryFn: () => fetchComicContent(comic),
   });
 
   if (error) {
-    console.error("An unexpected error occurred: " + error);
+    console.error(`An unexpected error occurred: ${error.message}`);
+  }
+
+  if (isLoading || isPending) {
+    return (
+      <div className="comic-card-container w-full h-full">
+        <ContentLoader />
+      </div>
+    );
   }
 
   if (
