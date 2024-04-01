@@ -14,3 +14,9 @@
 .comic-popup-back {
   transform: rotateY(180deg);
 }
+
+.comic-description,
+.search-results,
+.search-container {
+  scrollbar-width: none;
+}

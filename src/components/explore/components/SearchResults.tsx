@@ -1,5 +1,6 @@
 import { SearchComic } from "../../../models/search-comic";
 import ComicPopup from "../../ComicPopup";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function SearchResults({ results }: { results: SearchComic[] }) {
   if (
@@ -19,21 +20,32 @@ function SearchResults({ results }: { results: SearchComic[] }) {
     );
   }
 
-  const filteredComics: SearchComic[] = results
+  let filteredComics: SearchComic[] = results
     .filter(
       (comic: SearchComic) =>
         comic?.content_rating === "safe" && comic?.desc !== ""
     )
-    .slice(0, 10);
+    .slice(0, 15);
+
+  // This removes any comics with the specified genre to further hide mature content.
+  for (const comic of filteredComics) {
+    for (const genre of comic.genres) {
+      if (genre === 254) {
+        filteredComics = filteredComics.filter(
+          (storedComic) => storedComic !== comic
+        );
+      }
+    }
+  }
 
   return (
     <>
       <h2 className="font-semibold text-white text-lg">Search Results</h2>
-      <div className="search-container w-full h-3/5 rounded-lg gap-4 flex flex-col align-center py-4 mb-4 sm:overflow-y-scroll md:h-35/100 lg:h-2/5 md:flex-wrap">
+      <div className="search-container w-full h-full rounded-lg gap-4 flex flex-col align-center py-4 mb-4 sm:overflow-y-scroll md:flex-wrap md:flex-row">
         {filteredComics.map((searchResult: SearchComic) => (
           <div
             key={searchResult?.slug}
-            className="w-full h-2/5 p-0 m-0 flex flex-row justify-start items-center relative first:pl-0 hover:cursor-pointer md:w-3/5  bg-purple-grey rounded-lg"
+            className="w-full h-3/5 p-0 m-0 flex flex-row justify-start items-center relative first:pl-0 hover:cursor-pointer md:w-[49.4%]  bg-purple-grey rounded-lg"
             onClick={() =>
               (
                 document.getElementById(
@@ -49,11 +61,11 @@ function SearchResults({ results }: { results: SearchComic[] }) {
               <ComicPopup comicSlug={searchResult?.slug} />
             </dialog>
 
-            <img
+            <LazyLoadImage
               src={`https://meo3.comick.pictures/${searchResult?.md_covers?.[0]?.b2key}`}
               alt={`Comic Cover Image`}
               className="rounded-lg h-4/5 w-1/4 object-fit ml-2 md:w-1/5 lg:w-1/10"
-            ></img>
+            />
 
             <div className="comic-quick-info-container h-full px-2 py-1 w-4/5">
               <p className="p-2 w-full text-wrap font-sans text-white font-semibold">

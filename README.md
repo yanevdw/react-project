@@ -1,3 +1,3 @@
 # React Project
 
-This repository features my react project that features a manga reader application.
+Welcome to Jorōgumo, the manga reader with a carefully constructed web of fascinating comics.

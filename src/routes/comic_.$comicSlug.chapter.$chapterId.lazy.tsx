@@ -1,12 +1,12 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import ComicChapter from "../components/comic/ComicChapter";
-import PageNotFoundComponent from "../components/PageNotFoundComponent";
+import PageNotFound from "../components/PageNotFound";
 
 export const Route = createLazyFileRoute(
   "/comic/$comicSlug/chapter/$chapterId"
 )({
   component: Chapter,
-  notFoundComponent: PageNotFoundComponent,
+  notFoundComponent: PageNotFound,
 });
 
 function Chapter() {

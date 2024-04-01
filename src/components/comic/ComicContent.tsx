@@ -50,8 +50,8 @@ function ComicContent({ comic }: { comic: string }) {
           alt="Comic Cover Image"
           className="h-full w-full rounded-md object-cover object-top"
         />
-        <div className="image-overlay w-full h-full bg-gray-900/50 from-plum absolute rounded-md flex justify-center items-center">
-          <h2 className="text-white font-semibold text-3xl uppercase ">
+        <div className="image-overlay w-full h-full bg-gray-900/50 from-plum absolute rounded-md flex justify-center items-center text-center">
+          <h2 className="text-white font-semibold text-3xl w-fit uppercase">
             {comicData?.comic?.title}
           </h2>
         </div>

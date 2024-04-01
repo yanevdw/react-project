@@ -1,6 +1,6 @@
 import { GiSpiderWeb } from "react-icons/gi";
 
-function PageNotFoundComponent() {
+function PageNotFound() {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center gap-4">
       <GiSpiderWeb size={90} className="text-white" />
@@ -15,4 +15,4 @@ function PageNotFoundComponent() {
   );
 }
 
-export default PageNotFoundComponent;
+export default PageNotFound;

@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Explore from "../components/explore/Explore";
+import Home from "../components/home/Home";
 import PageNotFound from "../components/PageNotFound";
 
-export const Route = createFileRoute("/explore")({
-  component: Explore,
+export const Route = createFileRoute("/")({
+  component: Home,
   notFoundComponent: PageNotFound,
 });

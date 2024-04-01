@@ -5,6 +5,7 @@ import { Link } from "@tanstack/react-router";
 import ContentLoader from "./ContentLoader";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { GiClick } from "react-icons/gi";
 
 function ComicPopup({ comicSlug }: { comicSlug: string }) {
   const [cardFlipped, setCardFlipped] = useState(false);
@@ -64,24 +65,29 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
           animate={{ rotateY: cardFlipped ? 180 : 360 }}
           transition={{ duration: 0.6, animationDirection: "normal" }}
         >
-          <div className="comic-popup-front absolute w-full h-full bg-frost backdrop-blur rounded-lg p-3">
+          <div className="comic-popup-front absolute flex flex-row justify-end w-full h-full bg-frost backdrop-blur rounded-lg p-3">
             <img
               src={`https://meo3.comick.pictures/${comicContentResults.comic.md_covers[0].b2key}`}
               alt="Manga Cover Image"
               className="h-full w-full object-cover object-top rounded-md"
+            />
+            <GiClick
+              className="absolute m-2 p-2 bg-frost flex items-end rounded-3xl text-white md:hidden"
+              size={40}
             />
           </div>
 
           <div className="comic-popup-back absolute w-full h-full bg-frost backdrop-blur rounded-lg p-3">
             <div className="comic-info-container w-full h-full flex flex-col bg-plum-500 p-4 rounded-lg">
               <div className="comic-quick-facts-container mb-4 w-full h-1/10 flex justify-between items-center gap-4">
-                <div className="comic-popup-header flex flex-row justify-start gap-4">
+                <div className="comic-popup-header flex flex-row justify-start items-center gap-4">
                   <h2 className="font-sans font-semibold text-lg">
                     {comicContentResults.comic.title}
                   </h2>
                   {/* Sometimes the follow count is not null but 0, so I am accommodating this by hiding the follow count in the event that this happens */}
-                  {comicContentResults.comic.follow_count !== 0 ? (
-                    <label className="bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2 text-center">
+                  {comicContentResults.comic.follow_count !== 0 ||
+                  comicContentResults.comic.title.length < 10 ? (
+                    <label className="h-fit bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2 text-center">
                       <IoPerson className="mt-1" />
                       {comicContentResults.comic.follow_count}
                     </label>
@@ -111,18 +117,18 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                   </label>
                 ))}
               </div>
-              <div className="comic-description-container w-full h-3/10">
+              <div className="comic-description-container w-full mb-8 md:mb-2 h-1/5 md:h-3/10">
                 <h3 className="text-white font-sans font-semibold font-md mt-2">
                   Description
                 </h3>
-                <p className="text-white overflow-y-scroll overflow-x-hidden h-3/5">
+                <p className="comic-description text-white overflow-y-scroll overflow-x-hidden h-3/5">
                   {comicContentResults.comic.desc}
                 </p>
               </div>
               <div className="comic-popup-button-container h-1/10 flex justify-end">
                 <Link
                   to={`/comic/${comicContentResults.comic.slug}`}
-                  className="bg-blue-munsell p-2 rounded-lg text-white font-semibold"
+                  className="bg-blue-munsell rounded-lg px-2 text-white flex items-center font-semibold"
                 >
                   Read Comic
                 </Link>
