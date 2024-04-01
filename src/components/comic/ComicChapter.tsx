@@ -3,6 +3,7 @@ import { fetchChapterContent } from "../../services/api";
 import { MdImage } from "../../models/common-types";
 import { Link } from "@tanstack/react-router";
 import ContentLoader from "../ContentLoader";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function ComicChapter({ chapterId }: { chapterId: string }) {
   const {
@@ -41,7 +42,7 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
   return (
     <div className="w-full h-full relative">
       {chapterData?.chapter?.md_images?.map((chapterImage: MdImage) => (
-        <img
+        <LazyLoadImage
           src={`https://meo3.comick.pictures/${chapterImage.b2key}`}
           key={chapterImage.name}
           className="w-full object-cover"
