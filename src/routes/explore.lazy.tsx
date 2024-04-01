@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute } from "@tanstack/react-router";
 import Explore from "../components/explore/Explore";
 import PageNotFoundComponent from "../components/PageNotFoundComponent";
 
-export const Route = createFileRoute("/explore")({
+export const Route = createLazyFileRoute("/explore")({
   component: Explore,
   notFoundComponent: PageNotFoundComponent,
 });

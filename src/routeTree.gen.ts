@@ -13,10 +13,10 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ExploreImport } from './routes/explore'
 
 // Create Virtual Routes
 
+const ExploreLazyImport = createFileRoute('/explore')()
 const IndexLazyImport = createFileRoute('/')()
 const ComicComicSlugLazyImport = createFileRoute('/comic/$comicSlug')()
 const ComicComicSlugChapterChapterIdLazyImport = createFileRoute(
@@ -25,10 +25,10 @@ const ComicComicSlugChapterChapterIdLazyImport = createFileRoute(
 
 // Create/Update Routes
 
-const ExploreRoute = ExploreImport.update({
+const ExploreLazyRoute = ExploreLazyImport.update({
   path: '/explore',
   getParentRoute: () => rootRoute,
-} as any)
+} as any).lazy(() => import('./routes/explore.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -61,7 +61,7 @@ declare module '@tanstack/react-router' {
       parentRoute: typeof rootRoute
     }
     '/explore': {
-      preLoaderRoute: typeof ExploreImport
+      preLoaderRoute: typeof ExploreLazyImport
       parentRoute: typeof rootRoute
     }
     '/comic/$comicSlug': {
@@ -79,7 +79,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  ExploreRoute,
+  ExploreLazyRoute,
   ComicComicSlugLazyRoute,
   ComicComicSlugChapterChapterIdLazyRoute,
 ])
