@@ -71,10 +71,17 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
               alt="Manga Cover Image"
               className="h-full w-full object-cover object-top rounded-md"
             />
-            <GiClick
-              className="absolute m-2 p-2 bg-purple-1000 flex items-end rounded-3xl text-white md:hidden"
-              size={40}
-            />
+            <div className="controller-container absolute flex flex-row w-1/5 h-fit gap-4 justify-center m-4">
+              <GiClick
+                className="bg-purple-1000 w-2/5  flex items-end p-1.5 text-4xl rounded-2xl text-white md:hidden"
+                // size={40}
+              />
+              <form method="dialog">
+                <button className="btn bg-plum-300 btn-sm btn-circle btn-ghost text-lg leading-8 h-fit  m-0 flex items-center justify-center outline-none text-center md:absolute">
+                  ✕
+                </button>
+              </form>
+            </div>
           </div>
 
           <div className="comic-popup-back absolute w-full h-full bg-frost backdrop-blur rounded-lg p-3">
