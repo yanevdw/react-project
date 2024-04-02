@@ -72,7 +72,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
               className="h-full w-full object-cover object-top rounded-md"
             />
             <GiClick
-              className="absolute m-2 p-2 bg-frost flex items-end rounded-3xl text-white md:hidden"
+              className="absolute m-2 p-2 bg-purple-1000 flex items-end rounded-3xl text-white md:hidden"
               size={40}
             />
           </div>
