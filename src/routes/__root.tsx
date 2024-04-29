@@ -1,4 +1,4 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import {createRootRoute, Link, Outlet} from "@tanstack/react-router";
 import DesktopNavigation from "../components/DesktopNavigation";
 
 import MobileNavigation from "../components/MobileNavigation";
@@ -8,9 +8,9 @@ export const Route = createRootRoute({
     <>
       <div className="h-screen w-full bg-plum overflow-y-hidden">
         <div className="header-container px-6 h-1/10 flex items-center justify-between">
-          <h1 className="text-white font-sans text-2xl font-semibold">
+          <Link to="/" className="text-white font-sans text-2xl font-semibold hover:cursor-pointer">
             Jorōgumo
-          </h1>
+          </Link>
           {window.location.pathname.includes("chapter") ? (
             <div className="web-nav-container text-white w-3/10 block">
               <DesktopNavigation />
