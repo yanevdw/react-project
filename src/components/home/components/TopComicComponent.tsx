@@ -59,7 +59,7 @@ function TopComicComponent({ comicType }: { comicType: string }) {
         {topTenComics.map((comicRec: RankDetails) => (
           <div
             key={comicRec?.slug}
-            className="carousel-item w-30/100 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer md:w-1/6 lg:w-1/10"
+            className="carousel-item w-30/100 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer hover:-my-2 md:w-1/6 lg:w-1/10"
             onClick={() =>
               (
                 document.getElementById(
