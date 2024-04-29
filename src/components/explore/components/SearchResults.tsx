@@ -69,11 +69,13 @@ function SearchResults({ results }: { results: SearchComic[] }) {
 
             <div className="comic-quick-info-container h-full px-2 py-1 w-4/5">
               <p className="p-2 w-full text-wrap font-sans text-white font-semibold">
-                {searchResult?.title}
+                  {searchResult.title
+                      ? `${searchResult?.title.substring(0, 20)}...`
+                      : null}
               </p>
               <p className="p-2 w-full text-wrap font-sans text-white">
                 {searchResult.desc
-                  ? `${searchResult?.desc.substring(0, 50)}...`
+                  ? `${searchResult?.desc.substring(0, 40)}...`
                   : null}
               </p>
             </div>
