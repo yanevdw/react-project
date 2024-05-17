@@ -15,6 +15,8 @@ export default {
         "purple-power": "rgb(129, 110, 148)",
         frost: "rgba(255, 255, 255, 0.35)",
         "purple-grey": "rgb(34, 30, 43)",
+        "purple-frost": "rgba(100,91,131,0.25)",
+        'magenta': "rgb(149, 25, 68)",
       },
       height: {
         "1/10": "10%",
