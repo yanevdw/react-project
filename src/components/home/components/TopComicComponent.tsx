@@ -59,7 +59,7 @@ function TopComicComponent({ comicType }: { comicType: string }) {
         {topTenComics.map((comicRec: RankDetails) => (
           <div
             key={comicRec?.slug}
-            className="carousel-item w-30/100 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer hover:-my-2 md:w-1/6 lg:w-1/10"
+            className="carousel-item w-30/100 h-full p-0 m-0 flex flex-col justify-center relative first:pl-0 hover:cursor-pointer hover:-my-2 md:w-[28%] lg:w-1/5"
             onClick={() =>
               (
                 document.getElementById(
@@ -77,10 +77,10 @@ function TopComicComponent({ comicType }: { comicType: string }) {
             <img
               src={`https://meo3.comick.pictures/${comicRec?.md_covers?.[0]?.b2key}`}
               alt={`${comicType} Cover Image`}
-              className="rounded-lg h-full w-full shadow-md shadow-gray-600"
+              className="rounded-lg h-full w-full shadow-md shadow-gray-600 object-fit md:object-fill"
             ></img>
-            <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0">
-              <p className="p-2 text-white font-sans font-semibold">
+            <div className="image-overlay h-full w-full rounded-lg bg-gradient-to-t from-plum absolute flex items-end justify-center text-center p-0 m-0 md:justify-start">
+              <p className="p-2 text-white font-sans font-semibold md:ml-2 md:mb-1.5">
                 {comicRec?.title}
               </p>
             </div>
