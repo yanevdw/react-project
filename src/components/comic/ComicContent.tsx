@@ -18,9 +18,17 @@ function ComicContent({ comic }: { comic: string }) {
     queryFn: () => fetchComicContent(comic),
   });
 
+    const {
+        data: comicChapters
+    } = useQuery({
+        queryKey: ["fetchComicChapters", comicData?.comic?.hid],
+        queryFn: () => fetchComicChapters(comicData?.comic?.hid ?? "", comicData?.comic?.chapter_count ?? 0),
+        enabled: !!comicData
+    });
+
   if (error) {
-    console.error(`An unexpected error occurred: ${error.message}`);
-  }
+    console.error(`An unexpected error occurred: ${error.message}`);}
+
 
   if (isLoading || isPending) {
     return (
@@ -29,17 +37,6 @@ function ComicContent({ comic }: { comic: string }) {
       </div>
     );
   }
-
-
-       const {
-           data: comicChapters
-       } = useQuery({
-           queryKey: ["fetchComicChapters", comicData?.comic?.hid],
-           queryFn: () => fetchComicChapters(comicData?.comic?.hid ?? "", comicData?.comic?.chapter_count ?? 0),
-       });
-
-
-
 
   if (
     !(
