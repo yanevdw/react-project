@@ -52,7 +52,8 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
     );
   }
 
-  const comicGenres = comicContentResults.comic.md_comic_md_genres.slice(0, 3);
+
+const comicGenres = comicContentResults.comic.md_comic_md_genres.sort((a, b) => b.md_genres.name.length - a.md_genres.name.length).slice(0, 2);
   return (
     <div className="comic-popup h-full w-full flex items-center justify-center hover:cursor-pointer py-4">
       <div
@@ -73,13 +74,14 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                     {comicContentResults.comic.title}
                   </h2>
                   {/* Sometimes the follow count is not null but 0, so I am accommodating this by hiding the follow count in the event that this happens */}
-                  {comicContentResults.comic.follow_count !== 0 ||
-                  comicContentResults.comic.title.length < 10 ? (
-                      <label className="h-fit bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2 text-center">
-                        <IoPerson className="mt-1" />
-                        {comicContentResults.comic.follow_count}
-                      </label>
-                  ) : null}
+                  {(comicContentResults.comic.title.length < 15) ?
+                      (comicContentResults.comic.follow_count !== 0) ?
+                          <label className="h-fit bg-plum-300 bg-blur px-4 py-1 rounded-3xl flex gap-2 text-center">
+                            <IoPerson className="mt-1"/>
+                            {comicContentResults.comic.follow_count}
+                          </label> : null
+                      : null
+                  }
                 </div>
 
 
@@ -93,7 +95,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                 <img
                     src={`https://meo3.comick.pictures/${comicContentResults.comic.md_covers[0].b2key}`}
                     alt="Manga Cover Image"
-                    className="h-full w-full object-cover object-top rounded-md"
+                    className="h-full w-full object-cover object-center rounded-md"
                 />
               </div>
               <div className="comic-genres-container flex flex-row h-fit justify-start items-start mt-4 gap-2 flex-wrap md:justify-start md:gap-4 lg:justify-start lg:gap-4 overflow-x-clip">
@@ -114,14 +116,14 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                   {comicContentResults.comic.desc}
                 </p>
               </div>
-              <div className="comic-popup-button-container h-1/10 flex justify-between">
+              <div className="comic-popup-button-container h-1/10 flex justify-between items-center">
                 <GiClick
-                    className="bg-purple-1000 w-fit  flex items-end p-2 text-4xl rounded-2xl text-white md:hidden"
+                    className="bg-magenta w-fit  flex items-end p-2 text-4xl rounded-2xl text-white md:hidden"
                     // size={40}
                 />
                 <Link
                     to={`/comic/${comicContentResults.comic.slug}`}
-                    className="bg-blue-munsell rounded-lg px-2 text-white flex items-center font-semibold"
+                    className="bg-blue-munsell h-full rounded-lg px-2 text-white flex items-center font-semibold"
                 >
                   Read Comic
                 </Link>
@@ -136,7 +138,7 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
             />
             <div className="controller-container absolute flex flex-row w-2/5 h-fit gap-2 justify-end m-4">
               <GiClick
-                  className="bg-purple-1000 w-fit  flex items-end p-2 text-4xl rounded-2xl text-white md:hidden"
+                  className="bg-magenta w-fit  flex items-end p-2 text-4xl rounded-2xl text-white md:hidden"
                   // size={40}
               />
               <form method="dialog">
