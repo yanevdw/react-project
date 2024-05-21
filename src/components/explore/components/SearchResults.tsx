@@ -23,7 +23,7 @@ function SearchResults({ results }: { results: SearchComic[] }) {
   let filteredComics: SearchComic[] = results
     .filter(
       (comic: SearchComic) =>
-        comic?.content_rating === "safe" && comic?.desc !== ""
+        comic?.content_rating === "safe" && comic?.desc !== "" && comic?.desc !== null
     )
     .slice(0, 15);
 
@@ -45,7 +45,7 @@ function SearchResults({ results }: { results: SearchComic[] }) {
         {filteredComics.map((searchResult: SearchComic) => (
           <div
             key={searchResult?.slug}
-            className="w-full h-3/5 p-0 m-0 flex flex-row justify-start items-center relative first:pl-0 hover:cursor-pointer md:w-[48%] bg-purple-grey rounded-lg"
+            className="w-full h-4/5 p-0 m-0 flex flex-row justify-start items-center relative first:pl-0 hover:cursor-pointer md:w-[48%] bg-purple-grey rounded-lg"
             onClick={() =>
               (
                 document.getElementById(
