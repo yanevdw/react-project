@@ -30,7 +30,7 @@ function SearchResults({ results }: { results: SearchComic[] }) {
   // This removes any comics with the specified genre to further hide mature content.
   for (const comic of filteredComics) {
     for (const genre of comic.genres) {
-      if (genre === 254) {
+      if (genre === 254 || genre === 287 || genre === 251 || genre === 1 || genre === 320 || genre === 253  || genre === 298 || genre === 3 || genre === 301 || genre === 311 || genre === 313 || genre === 270 || genre === 275 || genre === 276) {
         filteredComics = filteredComics.filter(
           (storedComic) => storedComic !== comic
         );

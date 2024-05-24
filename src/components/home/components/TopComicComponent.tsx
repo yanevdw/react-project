@@ -47,9 +47,18 @@ function TopComicComponent({ comicType }: { comicType: string }) {
   }
 
   // Filter the results to ensure that there will always be a cover image and narrow it down to the first 10 comics.
-  const topTenComics: RankDetails[] = topComicResults.rank
-    .filter((comic: RankDetails) => comic.md_covers?.[0]?.b2key)
-    .slice(0, 10);
+  let topComics: RankDetails[] = topComicResults.rank
+    .filter((comic: RankDetails) => comic.md_covers?.[0]?.b2key);
+  for (const comic of topComics) {
+    for (const comicGenre of comic.genres) {
+      if (comicGenre === 254 || comicGenre === 287 || comicGenre === 251 || comicGenre === 1 || comicGenre === 320 || comicGenre === 253  || comicGenre === 298 || comicGenre === 3 || comicGenre === 301 || comicGenre === 311 || comicGenre === 313 || comicGenre === 270 || comicGenre === 275 || comicGenre === 276)
+      {
+        topComics = topComics.filter((savedComic: RankDetails) => savedComic.title !== comic.title)
+      }
+    }
+  }
+
+  const topTenComics : RankDetails[] = topComics.slice(0,10);
 
   return (
     <>
