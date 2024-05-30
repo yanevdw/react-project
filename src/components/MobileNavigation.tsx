@@ -1,22 +1,22 @@
 import { Link } from "@tanstack/react-router";
-import { FaHome } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
+import {FaBinoculars} from "react-icons/fa";
+import {FaHouse} from "react-icons/fa6";
 
 function MobileNavigation() {
   return (
-    <div className="w-full h-full mt-4 border-none outline-none bg-gray-600/35 flex flex-row items-center justify-center text-center align-self-end">
+    <div className="w-full h-full border-none outline-none bg-purple-frost backdrop-blur rounded-t-2xl flex flex-row items-center justify-center text-center align-self-end">
       <Link
         to="/"
-        className="w-1/2 h-full flex flex-col items-center justify-center gap-2 text-white [&.active]:border-t-2 hover:cursor-pointer"
+        className="w-1/2 h-full flex flex-col items-center justify-center text-frost gap-1 text-sm [&.active]:text-white hover:cursor-pointer"
       >
-        <FaHome size={18} />
+        <FaHouse size={20} />
         Home
       </Link>
       <Link
         to="/explore"
-        className="w-1/2 h-full flex flex-col items-center justify-center gap-2 text-white [&.active]:border-t-2 hover:cursor-pointer"
+        className="w-1/2 h-full flex flex-col items-center justify-center gap-1 text-frost text-sm [&.active]:text-white hover:cursor-pointer"
       >
-        <FaSearch size={18} />
+        <FaBinoculars size={20} />
         Explore
       </Link>
     </div>

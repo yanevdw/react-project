@@ -3,11 +3,11 @@ import TopComicComponent from "./components/TopComicComponent";
 function Home() {
   return (
     <>
-      <h2 className="text-white font-semibold text-xl">Top 10 Manga</h2>
+      <p className="text-white font-semibold text-xl">Top 10 Manga</p>
       <TopComicComponent comicType="Manga" />
-      <h2 className="text-white font-semibold text-xl">Top 10 Manhwa</h2>
+      <p className="text-white font-semibold text-xl">Top 10 Manhwa</p>
       <TopComicComponent comicType="Manhwa" />
-      <h2 className="text-white font-semibold text-xl">Top 10 Manhua</h2>
+      <p className="text-white font-semibold text-xl">Top 10 Manhua</p>
       <TopComicComponent comicType="Manhua" />
     </>
   );

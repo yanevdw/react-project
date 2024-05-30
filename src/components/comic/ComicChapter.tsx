@@ -17,7 +17,11 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
   });
 
   if (isLoading || isPending) {
-    <ContentLoader />;
+    return (
+      <div className="loader-container h-full w-full">
+        <ContentLoader />;
+      </div>
+    );
   }
 
   if (error) {
@@ -49,8 +53,8 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
           alt="Chapter Page Image"
         />
       ))}
-      <div className="chapter-navigation h-1/10 w-full flex flex-row justify-evenly gap-2 items-center absolute">
-        {chapterData.prev.hid ? (
+      <div className="chapter-navigation h-1/10 w-full flex flex-row justify-evenly gap-2 items-center absolute lg:pb-2">
+        {chapterData.prev?.hid ? (
           <Link
             to={`../${chapterData?.prev?.hid}`}
             className="bg-blue-munsell/75 w-fit h-fit px-4 py-2 z-40 rounded-md text-white font-semibold text-nowrap"

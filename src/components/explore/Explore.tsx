@@ -13,6 +13,7 @@ import SearchComicsByGenre from "./components/SearchComicsByGenre";
 function Explore() {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [searchedComicName, setSearchedComicName] = useState("");
+  const [searchType, setSearchType] = useState("");
 
   // Validation for input string
   const comicSearchSchema = Yup.object().shape({
@@ -25,10 +26,12 @@ function Explore() {
   // Controls what happens when one of the genres are selected.
   function handleGenreClick(genre: string) {
     setSelectedGenre(genre.toLowerCase());
+    setSearchType("genre");
   }
 
   function handleSearch(comicName: string) {
     setSearchedComicName(comicName);
+    setSearchType("comic");
   }
 
   return (
@@ -64,13 +67,8 @@ function Explore() {
           </Form>
         )}
       </Formik>
-      <div className="search-results h-3/10 overflow-y-scroll">
-        {searchedComicName && (
-          <SearchComicsByName comicName={searchedComicName} />
-        )}
-      </div>
 
-      <h2 className="text-white text-lg font-semibold mt-6">Quick filters</h2>
+      <h2 className="text-white text-lg font-semibold mt-10">Quick filters</h2>
       <h3 className="text-white text-md mt-3 mb-3">Genres</h3>
       <div className="genres-container flex flex-row gap-3 flex-wrap mb-12">
         {comicGenres.map((comicGenre, index) => (
@@ -84,8 +82,25 @@ function Explore() {
           </label>
         ))}
       </div>
-      <div className="search-results h-3/10 overflow-y-scroll">
-        {selectedGenre && <SearchComicsByGenre genre={selectedGenre} />}
+      <div className="search-results h-[70%] overflow-y-scroll flex flex-row relative">
+        {searchType === "comic" ? (
+          <div className="absolute w-full h-full">
+            <SearchComicsByName comicName={searchedComicName} />
+          </div>
+        ) : null}
+        {searchType === "genre" ? (
+          <div className="absolute w-full h-full">
+            <SearchComicsByGenre genre={selectedGenre} />
+          </div>
+        ) : null}
+        {/*{selectedGenre ? (*/}
+        {/*  <div>*/}
+        {/*    */}
+        {/*  </div>*/}
+        {/*) : null}*/}
+        {/*{searchedComicName ? (*/}
+        {/* */}
+        {/*) : null}*/}
       </div>
     </>
   );

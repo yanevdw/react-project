@@ -74,6 +74,7 @@ export interface Comic {
   follow_count: number;
   desc: string;
   slug: string;
+  status: number;
   year: number;
   bayesian_rating: string;
   rating_count: number;
