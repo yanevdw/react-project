@@ -17,6 +17,6 @@
 
 .comic-description,
 .search-results,
-.search-container {
+.search-container, .pagination {
   scrollbar-width: none;
 }

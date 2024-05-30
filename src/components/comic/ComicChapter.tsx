@@ -16,13 +16,12 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
     queryFn: () => fetchChapterContent(chapterId),
   });
 
-
   if (isLoading || isPending) {
-    return (<div className="loader-container h-full w-full">
-      <ContentLoader/>;
-    </div>)
-
-
+    return (
+      <div className="loader-container h-full w-full">
+        <ContentLoader />;
+      </div>
+    );
   }
 
   if (error) {
@@ -54,7 +53,7 @@ function ComicChapter({ chapterId }: { chapterId: string }) {
           alt="Chapter Page Image"
         />
       ))}
-      <div className="chapter-navigation h-1/10 w-full flex flex-row justify-evenly gap-2 items-center absolute">
+      <div className="chapter-navigation h-1/10 w-full flex flex-row justify-evenly gap-2 items-center absolute lg:pb-2">
         {chapterData.prev?.hid ? (
           <Link
             to={`../${chapterData?.prev?.hid}`}

@@ -5,13 +5,13 @@ function DesktopNavigation() {
     <div className="navbar-container flex justify-end gap-8">
       <Link
         to="/"
-        className="[&.active]:font-bold [&.active]:border-b-2 hover:cursor-pointer hover:border-b-2 hover:border-blue-munsell"
+        className="text-gray-500 [&.active]:text-white [&.active]:font-bold hover:cursor-pointer hover:font-semibold hover:text-blue-munsell"
       >
         Home
       </Link>{" "}
       <Link
         to="/explore"
-        className="[&.active]:font-bold [&.active]:border-b-2 hover:cursor-pointer  hover:border-b-2 hover:border-blue-munsell"
+        className="text-gray-500 [&.active]:text-white [&.active]:font-bold hover:cursor-pointer hover:font-semibold hover:text-blue-munsell"
       >
         Explore
       </Link>
