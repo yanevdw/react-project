@@ -118,13 +118,13 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
                 <h3 className="text-white font-sans font-semibold font-md mt-2">
                   Description
                 </h3>
-                <p className="comic-description text-white overflow-y-scroll overflow-x-hidden h-[70%] sm:h-[72.5%]">
+                <p className="comic-description text-white overflow-y-scroll overflow-x-hidden h-[70%] sm:h-[72.5%] xl:h-[68%]">
                   {comicContentResults.comic.desc}
                 </p>
               </div>
-              <div className="comic-popup-button-container h-1/10 flex justify-between items-center xl:justify-end">
+              <div className="comic-popup-button-container h-1/10 flex justify-between items-center ">
                 <GiClick
-                  className="bg-magenta w-fit flex items-end p-2 text-4xl rounded-2xl text-white xl:hidden "
+                  className="bg-magenta w-fit flex items-end p-2 text-4xl rounded-2xl text-white  "
                   // size={40}
                 />
                 <Link
@@ -143,9 +143,9 @@ function ComicPopup({ comicSlug }: { comicSlug: string }) {
               alt="Manga Cover Image"
               className="h-full w-full object-cover object-top rounded-md"
             />
-            <div className="controller-container absolute flex flex-row w-2/5 h-fit gap-2 justify-end m-4">
+            <div className="controller-container absolute flex flex-row w-2/5 h-fit gap-4 xl:gap-12 justify-end m-4">
               <GiClick
-                className="bg-magenta w-fit flex items-end p-2 text-4xl rounded-2xl text-white xl:hidden"
+                className="bg-magenta w-fit flex items-end p-2 text-4xl rounded-2xl text-white"
                 // size={40}
               />
               <form method="dialog">

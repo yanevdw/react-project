@@ -27,23 +27,41 @@ export const Route = createRootRoute({
             )}
           </div>
         )}
-
-        {window.location.pathname.includes("chapter") ||
-        window.location.pathname.includes("comic") ? (
-          <div
-            className="content-container h-[90%] overflow-y-scroll scroll-m-0 scroll-p-0"
-            id="content-container"
-          >
-            <Outlet />
-          </div>
-        ) : (
-          <div
-            className="content-container h-[82%] px-6 overflow-y-scroll scroll-m-0 scroll-p-0 md:h-90/100 pt-8"
-            id="content-container"
-          >
-            <Outlet />
-          </div>
-        )}
+        <>
+          {(() => {
+            if (
+              window.location.pathname.includes("comic") &&
+              !window.location.pathname.includes("chapter")
+            ) {
+              return (
+                <div
+                  className="content-container h-[90%] overflow-y-scroll scroll-m-0 scroll-p-0"
+                  id="content-container"
+                >
+                  <Outlet />
+                </div>
+              );
+            } else if (window.location.pathname.includes("chapter")) {
+              return (
+                <div
+                  className="content-container h-[92%] overflow-y-scroll scroll-m-0 scroll-p-0"
+                  id="content-container"
+                >
+                  <Outlet />
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  className="content-container h-[82%] px-6 overflow-y-scroll scroll-m-0 scroll-p-0 md:h-90/100 pt-8"
+                  id="content-container"
+                >
+                  <Outlet />
+                </div>
+              );
+            }
+          })()}
+        </>
 
         {window.location.pathname.includes("chapter") ? (
           <div className="hidden">
